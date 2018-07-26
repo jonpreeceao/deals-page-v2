@@ -1,8 +1,8 @@
 .c-product-card-list {
-  display: flex;
-  overflow-x: auto;
-  flex-grow: 1;
-  margin-right: -10px;
-  margin-left: -10px;
-  font-size: 0; // Hack to remove gaps between inline-block elements (instead of using HTML comments)
+	overflow: hidden;
+}
+
+.c-product-card-list__inner {
+	flex-wrap: nowrap;
+	overflow-x: auto;
 }

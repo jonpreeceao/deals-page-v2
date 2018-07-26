@@ -40,7 +40,7 @@ class App extends Component {
       <main className={styles.main}>
         <Header />
         {data.map((section, index) => (
-          <Fragment>
+          <Fragment key={index}>
             <Heading
               key={section.heading}
               heading={section.Heading}

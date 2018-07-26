@@ -1,11 +1,21 @@
 @import '../../globals/sass/variables';
 
 .c-product-card-list__item {
-  padding: 10px;
-  font-size: 10px; // Reset font-size: 0 hack on container
-  white-space: normal;
-  min-width: 200px;
-  max-width: 300px;
-  background-color: #ffffff;
-  border-radius: 4px;
+	display: flex;
+	border-radius: 4px;
+}
+
+.c-product-card-list__item {
+	&:first-of-type {
+		margin-left: 16px;
+	}
+}
+
+.c-product-card-list__item-inner {
+	min-width: 200px;
+	max-width: 300px;
+	padding: 16px;
+	border-radius: 4px;
+	background-color: #ffffff;
+	white-space: normal;
 }
