@@ -50,7 +50,6 @@ class App extends Component {
                   <Heading
                     key={section.Heading}
                     heading={section.Heading}
-                    bgColor="#ededed"
                     isDark="true"
                   />
                 )}

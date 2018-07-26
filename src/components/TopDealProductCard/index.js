@@ -4,6 +4,15 @@ import styles from './styles'
 function TopDealProductCard(props) {
   const topDeal = props.product
   console.log(topDeal)
+
+  function spliceRating(rating){
+    const wholeNumber = parseInt(Math.floor(rating));
+    const decimalNumber = (rating % 1).toFixed(1).slice(-1);
+    return `${wholeNumber}-${decimalNumber}`
+  }
+
+
+
   return (
     <div className={styles['c-product-card-list__item']}>
       <div className="sg-grid-example">
@@ -22,7 +31,7 @@ function TopDealProductCard(props) {
             <div className="u-p--tiny">
               <h6>{topDeal.CatalogueProductSummary.Title}</h6>
               <div className={styles.rating}>
-                <div className={'stars rating-sprite-' + topDeal.CatalogueProductSummary.Rating + '-0'} />
+                <div className={'stars rating-sprite-' + spliceRating(topDeal.CatalogueProductSummary.Rating)} />
                 <div>{topDeal.CatalogueProductSummary.Rating} ({topDeal.CatalogueProductSummary.ReviewCount})</div>
               </div>
             </div>
