@@ -1,21 +1,20 @@
 :global {
   @import './globals/AMP/amp-global';
-  @import './globals/sass/variables';
-  @import './globals/sass/mixins';
-
-  .inner {
-    @include aoContainer();
-  }
 
   body {
     margin: 0;
   }
 
-  #root {
+  :root {
+    font-size: 16px;
     max-width: 100%;
   }
 
   .ao-header {
+    .inner {
+      max-width: 1200px;
+    }
+
     .ao-logo {
       margin: 0;
     }

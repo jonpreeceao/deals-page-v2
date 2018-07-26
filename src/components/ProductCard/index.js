@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from './styles'
 
 function ProductCard(props) {
 
   const { productData } = props;
 
   return (
-    <div className="c-product-card">
+    <div className={styles['c-product-card-list__item']}>
       <img src={`//media.ao.com/brandlogos/en-GB/${productData.Images.BrandFileName}`} alt={productData.Brand} />
       <img src={`//media.ao.com/en-GB/Productimages/Images/rvSmall/${productData.Images.SmallFileName}`} alt={productData.Title} />
       <div>&pound;{productData.Price}</div>
