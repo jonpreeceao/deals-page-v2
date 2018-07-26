@@ -4,8 +4,14 @@ import styles from './styles'
 
 class ProductCardList extends Component {
   render() {
-    return (
+    const result = (
       <div className={`${styles['c-product-card-list']} o-wrapper`}>
+        {this.props.header ? (
+          <h3>
+            {this.props.header}
+            <small>({this.props.total})</small>
+          </h3>
+        ) : null}
         <div className={`${styles['c-product-card-list__inner']} o-flex-container`}>
           {this.props.products.map(product => (
             <ProductCard key={product.ProductIdentifier} productData={product} />
@@ -13,6 +19,8 @@ class ProductCardList extends Component {
         </div>
       </div>
     )
+
+    return this.props.header ? <div>{result}</div> : result
   }
 }
 
