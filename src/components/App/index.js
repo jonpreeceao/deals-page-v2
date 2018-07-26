@@ -60,7 +60,8 @@ class App extends Component {
                   />
                 ) : (
                   <ProductCardList
-                    header={sections[sect].length > 1 ? section.Title : null}
+                    header={sections[sect].length > 1 ? `${section.Title}` : null}
+                    total={section.TotalProductCount}
                     key={`${ind}${section.Heading}`}
                     products={section.Products}
                   />

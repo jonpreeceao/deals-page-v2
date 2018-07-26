@@ -6,7 +6,12 @@ class ProductCardList extends Component {
   render() {
     const result = (
       <div className={`${styles['c-product-card-list']} o-wrapper`}>
-        {this.props.header ? <h3>{this.props.header}</h3> : null}
+        {this.props.header ? (
+          <h3>
+            {this.props.header}
+            <small>({this.props.total})</small>
+          </h3>
+        ) : null}
         <div className={`${styles['c-product-card-list__inner']} o-flex-container`}>
           {this.props.products.map(product => (
             <ProductCard key={product.ProductIdentifier} productData={product} />
