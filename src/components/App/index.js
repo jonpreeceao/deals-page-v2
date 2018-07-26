@@ -1,8 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Header from '../Header'
 import Heading from '../Heading'
 import ProductCardList from '../ProductCardList'
+<<<<<<< HEAD
 import TopDealProductCardList from '../TopDealProductCard'
+=======
+import SingleProduct from '../SingleProduct'
+>>>>>>> 17e9258cbc6694da15bb2fd896b5cf793107add7
 import Spinner from '../Spinner'
 
 import styles from './styles.scss'
@@ -16,13 +20,9 @@ class App extends Component {
 
   componentDidMount() {
     loadPageConfiguration().then(() => {
-      getProductData().then(result => {
-        if (result.Message) {
-          return
-        }
-
+      getProductData().then(results => {
         this.setState({
-          data: result.Response,
+          data: results,
           loading: false
         })
       })
@@ -36,18 +36,35 @@ class App extends Component {
       return <Spinner />
     }
 
-    if (!data || !data.Products) {
+    if (!data || !data.length) {
       return null
     }
 
     return (
       <main className={styles.main}>
         <Header />
-        <Heading heading='Our Best Deals' bgColor='#ededed' isDark='true' />
         <TopDealProductCardList products={data} />
-        <ProductCardList products={data} />
-        <Heading heading='Deal of the Day' bgColor='#ededed' isDark='true' />
-        <Heading heading='Explore More Deals' bgColor='#ededed' isDark='true' />
+        {data.map((section, index) => (
+          <Fragment>
+            <Heading
+              key={section.heading}
+              heading={section.Heading}
+              bgColor="#ededed"
+              isDark="true"
+            />
+            {section.IsSingleProduct ? (
+              <SingleProduct
+                key={`${index}${section.Heading}`}
+                productData={section.CatalogueProductDetail}
+              />
+            ) : (
+              <ProductCardList
+                key={`${index}${section.Heading}`}
+                products={section.Products}
+              />
+            )}
+          </Fragment>
+        ))}
       </main>
     )
   }

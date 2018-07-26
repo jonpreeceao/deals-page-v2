@@ -1,3 +1,7 @@
 {
-  "extends": "stylelint-config-standard"
+  "extends": "stylelint-preset-ao",
+    "ignoreFiles": [
+      "**/*.js",
+      "**/*.jsx"
+    ]
 }

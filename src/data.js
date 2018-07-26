@@ -3,11 +3,9 @@ const headers = {
   'X-Catalogue-Service-Api-Key': process.env.API_KEY
 }
 
-const url = 'https://beta-catalogueservice.ao-qa.com/api/v1/GetListerPage'
-
 const configurationPath = './config.json'
-
-let baseConfiguration = {}
+const companyId = 1
+let baseConfiguration = []
 
 export function loadPageConfiguration() {
   return fetch(configurationPath)
@@ -19,13 +17,31 @@ export function loadPageConfiguration() {
     })
 }
 
-export function getProductData(query) {
-  return fetch(url, {
-    method: 'POST',
-    headers,
-    cors: 'no-cors',
-    body: JSON.stringify({ ...baseConfiguration, ...query })
-  }).then(function(response) {
-    return response.json()
+export function getProductData() {
+  var requests = []
+
+  baseConfiguration.forEach(config => {
+    config.queries.forEach(query => {
+      var promise = fetch(config.url, {
+        method: 'POST',
+        headers,
+        cors: 'no-cors',
+        body: JSON.stringify({ CompanyId: companyId, ...query })
+      })
+        .then(response => {
+          return response.json()
+        })
+        .then(result => {
+          return {
+            Heading: config.heading,
+            IsSingleProduct:
+              config.url.indexOf('GetProductDetailByProductIdentifier') > -1,
+            ...result.Response
+          }
+        })
+      requests.push(promise)
+    })
   })
+
+  return Promise.all(requests)
 }

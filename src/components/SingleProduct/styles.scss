@@ -1,0 +1,29 @@
+@import '../../globals/sass/variables';
+
+.c-product-card-list__item {
+  padding: 10px;
+  font-size: 10px; // Reset font-size: 0 hack on container
+  white-space: normal;
+  min-width: 200px;
+  max-width: 300px;
+
+  // @media (min-width: $landscape) {
+  //   width: 50%;
+  // }
+
+  // @media (min-width: $desktop) {
+  //   width: 33.3333%;
+  //   min-width: 0;
+  //   max-width: none;
+  // }
+
+  // @media (min-width: $uber) {
+  //   width: 25%;
+  // }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
