@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styles from './styles.scss'
 
+import Header from '../Header'
+
 class App extends Component {
   state = {
     message: 'Hello, World!'
@@ -12,13 +14,7 @@ class App extends Component {
 
   render() {
     return (
-      <main className={styles.main}>
-        <h1>Hello, World!</h1>
-        <h2 className={styles.header}>Goodbye</h2>
-        <button className={styles.button} onClick={this.showMessage}>
-          Click Me
-        </button>
-      </main>
+      <Header />
     )
   }
 }
