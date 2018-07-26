@@ -1,13 +1,8 @@
 .c-product-card-list {
-  overflow: hidden;
-}
-
-.c-product-card-list__track {
-  overflow-x: scroll;
-  overflow-y: hidden;
   display: flex;
+  overflow-x: auto;
   flex-grow: 1;
-  flex-wrap: wrap;
-  width: 1200px;
-  height: 300px;
+  margin-right: -10px;
+  margin-left: -10px;
+  font-size: 0; // Hack to remove gaps between inline-block elements (instead of using HTML comments)
 }
