@@ -2,16 +2,19 @@ import React, { Component } from 'react'
 import Header from '../Header'
 import ProductCardList from '../ProductCardList'
 import styles from './styles.scss'
-import { queryListerPage } from '../../data'
+import { getProductData } from '../../data'
 
 class App extends Component {
   state = {
-    message: 'Hello, World!',
     data: []
   }
 
   componentDidMount() {
-    queryListerPage().then(result => {
+    getProductData({
+      CatalogueQuery: {
+        CategoryIds: [107, 108]
+      }
+    }).then(result => {
       if (result.Message) {
         return
       }
@@ -20,10 +23,6 @@ class App extends Component {
         data: result.Response
       })
     })
-  }
-
-  showMessage = () => {
-    alert(this.state.message)
   }
 
   render() {
