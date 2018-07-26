@@ -9,10 +9,14 @@
 	&:first-of-type {
 		margin-left: 16px;
 	}
+
+	&:last-of-type {
+		margin-right: 16px;
+	}
 }
 
 .c-product-card-list__item-inner {
-	min-width: 200px;
+	min-width: 250px;
 	max-width: 300px;
 	padding: 16px;
 	border-radius: 4px;
@@ -21,6 +25,6 @@
 }
 
 .rating {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }

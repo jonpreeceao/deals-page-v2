@@ -7,7 +7,7 @@ class ProductCardList extends Component {
     const result = (
       <div className={`${styles['c-product-card-list']} o-wrapper`}>
         {this.props.header ? (
-          <h3>
+          <h3 className={`${styles['c-product-card-list-heading']} u-pr--small u-pl--small`}>
             {this.props.header}
             <small>({this.props.total})</small>
           </h3>
@@ -20,7 +20,12 @@ class ProductCardList extends Component {
       </div>
     )
 
-    return this.props.header ? <div>{result}</div> : result
+    return (
+      this.props.header ?
+        <div className={`${styles['c-product-card-list--category']} u-pt--small u-pb--small`}>{result}</div>
+        :
+        result
+    )
   }
 }
 

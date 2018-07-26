@@ -1,9 +1,17 @@
 .c-product-card-list {
-	margin-bottom: 48px;
 	overflow: hidden;
+}
+
+.c-product-card-list--category {
+	margin-top: 48px;
+	background-color: #ffffff;
 }
 
 .c-product-card-list__inner {
 	flex-wrap: nowrap;
 	overflow-x: auto;
+}
+
+.c-product-card-list-heading {
+
 }
