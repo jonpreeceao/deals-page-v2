@@ -14,9 +14,6 @@ class Heading extends Component {
         <h2 className={classString}>
           {this.props.heading}
         </h2>
-        {/* <h2 className={this.props.isDark === 'true' ? styles.linethroughDark : styles.linethroughLight}>
-          <span style={{ backgroundColor: this.props.bgColor }}>{this.props.heading}</span>
-        </h2> */}
       </div>
     )
   }
