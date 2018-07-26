@@ -2,73 +2,74 @@
 @import '../../globals/sass/mixins';
 
 .button {
-  @include ao-cta();
+	@include ao-cta();
 }
 
 .inner {
-  @include aoContainer();
+	@include aoContainer();
 }
 
 .header {
-  font-family: $aoFontBold;
+	font-family: $aoFontBold;
 }
 
 .main {
-  background-color: #ededed;
+	// background-color: #ededed;
 }
 
 .linethrough-dark {
-  display: block;
-  width: 100%;
-  text-align: center;
-  position: relative;
-  margin: aoSpace(3) auto;
+	display: block;
+	position: relative;
+	width: 100%;
+	margin: aoSpace(3) auto;
+	color: #ffffff;
+	text-align: center;
 
-  span {
-    display: inline-block;
-    padding: 0 20px;
-    line-height: 1;
-    position: relative;
-    z-index: 2;
-    color: #000000;
-    text-transform: uppercase;
-  }
+	span {
+		display: inline-block;
+		position: relative;
+		z-index: 2;
+		padding: 0 20px;
+		line-height: 1;
+		text-transform: uppercase;
+		background-color: #171717;
+	}
 
-  &::before {
-    position: absolute;
-    content: '';
-    border-top: 2px solid #000000;
-    top: 55%;
-    left: 0;
-    right: 0;
-    z-index: 1;
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		top: 55%;
+		right: 0;
+		left: 0;
+		z-index: 1;
+		border-top: 2px solid;
+	}
 }
 
 .linethrough-light {
-  display: block;
-  width: 100%;
-  text-align: center;
-  position: relative;
-  margin: aoSpace(3) auto;
+	display: block;
+	position: relative;
+	width: 100%;
+	margin: aoSpace(3) auto;
+	text-align: center;
 
-  span {
-    display: inline-block;
-    padding: 0 20px;
-    line-height: 1;
-    position: relative;
-    z-index: 2;
-    color: #ffffff;
-    text-transform: uppercase;
-  }
+	span {
+		display: inline-block;
+		position: relative;
+		z-index: 2;
+		padding: 0 20px;
+		line-height: 1;
+		color: #ffffff;
+		text-transform: uppercase;
+	}
 
-  &::before {
-    position: absolute;
-    content: '';
-    border-top: 2px solid #ffffff;
-    top: 55%;
-    left: 0;
-    right: 0;
-    z-index: 1;
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		top: 55%;
+		right: 0;
+		left: 0;
+		z-index: 1;
+		border-top: 2px solid #ffffff;
+	}
 }

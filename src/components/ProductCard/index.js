@@ -1,4 +1,5 @@
 import React from 'react'
+import { parseRatingClass } from '../../utils/product'
 import styles from './styles'
 
 function ProductCard(props) {
@@ -12,7 +13,10 @@ function ProductCard(props) {
         <img src={`//media.ao.com/en-GB/Productimages/Images/rvSmall/${productData.Images.SmallFileName}`} alt={productData.Title} />
         <div>&pound;{productData.Price}</div>
         <h2>{ productData.Title }</h2>
-        <div>{ productData.Rating }</div>
+        <div className={styles.rating}>
+          <div className={'stars rating-sprite-' + parseRatingClass(productData.Rating)} />
+          <div>{productData.Rating} ({productData.ReviewCount})</div>
+        </div>
       </div>
     </div>
   )
