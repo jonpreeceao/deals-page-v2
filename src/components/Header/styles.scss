@@ -1,15 +1,30 @@
 @import '../../globals/sass/variables';
 @import '../../globals/sass/mixins';
 
-.button {
-  @include ao-cta();
+
+.inner {
+  @include aoContainer();
 }
 
-.header {
-  font-family: $aoFontBold;
+.button {
+  @include ao-cta();
+  margin: 0 4px;
+}
+
+.button-container {
+  overflow-x: scroll;
+  display: flex;
 }
 
 .main {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.header-image {
+  display: block;
+
+  img {
+    width: 100%;
+  }
 }
