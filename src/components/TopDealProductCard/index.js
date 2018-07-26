@@ -3,7 +3,6 @@ import styles from './styles'
 
 function TopDealProductCard(props) {
   const topDeal = props.product
-  debugger
   return (
     <div className={styles['c-product-card-list__item']}>
       <div className="sg-grid-example">

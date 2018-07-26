@@ -18,11 +18,11 @@ export function loadPageConfiguration() {
 }
 
 export function getProductData() {
-  var requests = []
+  let requests = []
 
   baseConfiguration.forEach(config => {
     config.queries.forEach(query => {
-      var promise = fetch(config.url, {
+      let promise = fetch(config.url, {
         method: 'POST',
         headers,
         cors: 'no-cors',
