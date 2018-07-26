@@ -6,32 +6,39 @@ import sampleProductData from '../ProductCardList/productData'
 =======
 >>>>>>> 7b04579183e95b0505e852777cfd1b013e628d07
 import ProductCardList from '../ProductCardList'
+import Spinner from '../Spinner'
+
 import styles from './styles.scss'
-import { getProductData } from '../../data'
+import { loadPageConfiguration, getProductData } from '../../data'
 
 class App extends Component {
   state = {
-    data: []
+    data: [],
+    loading: true
   }
 
   componentDidMount() {
-    getProductData({
-      CatalogueQuery: {
-        CategoryIds: [107, 108]
-      }
-    }).then(result => {
-      if (result.Message) {
-        return
-      }
+    loadPageConfiguration().then(() => {
+      getProductData().then(result => {
+        if (result.Message) {
+          return
+        }
 
-      this.setState({
-        data: result.Response
+        this.setState({
+          data: result.Response,
+          loading: false
+        })
       })
     })
   }
 
   render() {
-    const { data } = this.state
+    const { data, loading } = this.state
+
+    if (loading) {
+      return <Spinner />
+    }
+
     if (!data || !data.Products) {
       return null
     }
