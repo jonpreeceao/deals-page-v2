@@ -44,7 +44,7 @@ class App extends Component {
             <Heading
               key={section.heading}
               heading={section.Heading}
-              bgColor="#ededed"
+              // bgColor="#ededed"
               isDark="true"
             />
             {section.IsSingleProduct ? (
