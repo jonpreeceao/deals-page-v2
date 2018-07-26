@@ -20,7 +20,7 @@
       "https://beta-catalogueservice.ao-qa.com/api/v1/GetProductDetailByProductIdentifier",
     "queries": [
       {
-        "ProductIdentifier": 57049,
+        "ProductIdentifier": 47363,
         "AdditionalInformation": null
       }
     ]
@@ -29,6 +29,24 @@
     "heading": "Explore more deals",
     "url": "https://beta-catalogueservice.ao-qa.com/api/v1/GetListerPage",
     "queries": [
+      {
+        "CatalogueQuery": {
+          "CategoryIds": [107, 108],
+          "Formatting": {
+            "PageSize": 12
+          },
+          "ProductStates": ["LiveProduct"]
+        }
+      },
+      {
+        "CatalogueQuery": {
+          "CategoryIds": [107, 108],
+          "Formatting": {
+            "PageSize": 12
+          },
+          "ProductStates": ["LiveProduct"]
+        }
+      },
       {
         "CatalogueQuery": {
           "CategoryIds": [107, 108],

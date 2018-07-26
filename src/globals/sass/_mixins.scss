@@ -54,11 +54,11 @@
 
 @mixin responsiveStars(
   $fontSize,
-  $bgColor: rgba(125, 185, 232, 0),
-  $emptyStarColour: #a3abb1,
-  $filledStarColour: #f8d200
+  $bgColor,
+  $emptyStarColour,
+  $filledStarColour
 ) {
-  @include font-size($fontSize);
+  // @include font-size($fontSize);
 
   display: block;
   position: relative;
@@ -66,6 +66,7 @@
   height: $fontSize + px;
   font-family: ao-icons;
   line-height: 1;
+  font-size: $fontSize + px;
 
   &::before {
     content: '\e900';
@@ -74,6 +75,7 @@
     left: 0;
     background-color: $bgColor;
     color: $emptyStarColour;
+    width: 100%;
   }
 
   &::after {
@@ -84,12 +86,13 @@
     overflow: hidden;
     background-color: $bgColor;
     color: $filledStarColour;
+    width: 100%;
   }
 
   &.rating-sprite,
   &.ratingSprite {
     // Camelcase class name for backwards compatibility
-    $wholeNumbers: (1, 2, 3, 4);
+    $wholeNumbers: (0, 1, 2, 3, 4);
     $decimalNumbers: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 
     @each $wholeNumber in $wholeNumbers {
