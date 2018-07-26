@@ -1,5 +1,7 @@
 import React from 'react'
+import { parseRatingClass } from '../../utils/product'
 import styles from './styles'
+import { create } from 'domain';
 
 function TopDealProductCard(props) {
   const topDeal = props.product
@@ -31,21 +33,24 @@ function TopDealProductCard(props) {
             <div className="u-p--tiny">
               <h6>{topDeal.CatalogueProductSummary.Title}</h6>
               <div className={styles.rating}>
-                <div className={'stars rating-sprite-' + spliceRating(topDeal.CatalogueProductSummary.Rating)} />
+                <div className={'stars rating-sprite-' + parseRatingClass(topDeal.CatalogueProductSummary.Rating)} />
                 <div>{topDeal.CatalogueProductSummary.Rating} ({topDeal.CatalogueProductSummary.ReviewCount})</div>
               </div>
+              <p className={styles.price}>&pound;{topDeal.CatalogueProductSummary.Price}</p>
             </div>
           </div>
           <div className="o-flex-item u-grid--12">
-            <div className="u-p--tiny">col</div>
+            <div className="u-p--tiny">
+              <ul>
+                {topDeal.CatalogueProductSummary.FeatureDescriptions.map(feature => <li dangerouslySetInnerHTML={{__html:feature}}></li>)}
+              </ul>
+            </div>
           </div>
           <div className="o-flex-item u-grid--12">
             <div className="u-p--tiny">col</div>
           </div>
         </div>
       </div>
-
-      <div>&pound;{topDeal.CatalogueProductSummary.Price}</div>
     </div>
   )
 }

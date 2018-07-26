@@ -11,14 +11,15 @@
 
 .button {
   @include ao-cta();
-  margin: 0 4px;
 }
 
 .button-container {
   overflow-x: scroll;
   display: flex;
+  padding: aoSpace(3) 0 0;
 
   @media (min-width: $tablet) {
+    padding: aoSpace(3) 0 0;
     display: block;
     overflow: visible;
     text-align: center;
@@ -42,4 +43,5 @@
   flex-shrink: 0;
   flex-grow: 0;
   display: inline-block;
+  margin: 4px;
 }

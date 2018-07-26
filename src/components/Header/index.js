@@ -13,9 +13,9 @@ class Header extends Component {
       <Fragment>
         <header className={styles.header}>
           <picture className={styles.headerImage}>
-            <source type="image/jpeg" media="(min-width: 990px)" srcSet="//media.ao.com/uk/promotions/merch/PaydayDealsPage-240718_DPD.jpg" />
-            <source type="image/jpeg" media="(min-width: 768px)" srcSet="//media.ao.com/uk/promotions/merch/PaydayDealsPage-240718_DPT.jpg" />
-            <img srcSet="//media.ao.com/uk/promotions/merch/PaydayDealsPage-240718_DPM.jpg" alt="Payday Deals" />
+            <source type="image/jpeg" media="(min-width: 990px)" srcSet="//media.ao.com/uk/promotions/merch/deals-bannerUPDATED-141117_DPD.jpg" />
+            <source type="image/jpeg" media="(min-width: 768px)" srcSet="//media.ao.com/uk/promotions/merch/deals-banner-141117_DPT.jpg" />
+            <img srcSet="//media.ao.com/uk/promotions/merch/deals-banner2-141117_DPM.jpg" alt="Black Friday Deals" />
           </picture>
         </header>
         <div className={styles.inner}>
