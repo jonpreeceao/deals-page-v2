@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import Header from '../Header'
-<<<<<<< HEAD
 import Heading from '../Heading'
-import sampleProductData from '../ProductCardList/productData'
-=======
->>>>>>> 7b04579183e95b0505e852777cfd1b013e628d07
 import ProductCardList from '../ProductCardList'
+import TopDealProductCardList from '../TopDealProductCard'
 import Spinner from '../Spinner'
 
 import styles from './styles.scss'
@@ -46,14 +43,11 @@ class App extends Component {
     return (
       <main className={styles.main}>
         <Header />
-<<<<<<< HEAD
         <Heading heading='Our Best Deals' bgColor='#ededed' isDark='true' />
-        <ProductCardList products={productData} />
+        <TopDealProductCardList products={data} />
+        <ProductCardList products={data} />
         <Heading heading='Deal of the Day' bgColor='#ededed' isDark='true' />
         <Heading heading='Explore More Deals' bgColor='#ededed' isDark='true' />
-=======
-        <ProductCardList products={data.Products} />
->>>>>>> 7b04579183e95b0505e852777cfd1b013e628d07
       </main>
     )
   }

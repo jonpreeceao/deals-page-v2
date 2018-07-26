@@ -1,0 +1,19 @@
+@import '../../globals/sass/variables';
+
+.c-product-card-list__item {
+  background-color: #ffffff;
+  padding: 10px;
+  font-size: 10px; // Reset font-size: 0 hack on container
+  white-space: normal;
+  width: 100%;
+  max-width: 300px;
+  border-radius: $border-radius;
+  border: 1px solid $aoGrey;
+  margin: 0 auto;
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
