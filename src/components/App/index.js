@@ -39,28 +39,27 @@ class App extends Component {
     return (
       <main className={styles.main}>
         <Header />
-        {data.map(
-          (section, index) =>
-            section.IsSingleProduct ? (
-              <Fragment>
-                <Heading heading={section.Heading} bgColor="#ededed" isDark="true" />
-                <SingleProduct
-                  key={`${index}${section.Heading}`}
-                  productData={section.CatalogueProductDetail}
-                />
-              </Fragment>
+        {data.map((section, index) => (
+          <Fragment>
+            <Heading
+              key={section.heading}
+              heading={section.Heading}
+              bgColor="#ededed"
+              isDark="true"
+            />
+            {section.IsSingleProduct ? (
+              <SingleProduct
+                key={`${index}${section.Heading}`}
+                productData={section.CatalogueProductDetail}
+              />
             ) : (
-              <Fragment>
-                <Heading heading={section.Heading} bgColor="#ededed" isDark="true" />
-                <ProductCardList
-                  key={`${index}${section.Heading}`}
-                  products={section.Products}
-                />
-              </Fragment>
-            )
-        )}
-        <Heading heading="Deal of the Day" bgColor="#ededed" isDark="true" />
-        <Heading heading="Explore More Deals" bgColor="#ededed" isDark="true" />
+              <ProductCardList
+                key={`${index}${section.Heading}`}
+                products={section.Products}
+              />
+            )}
+          </Fragment>
+        ))}
       </main>
     )
   }
