@@ -1,0 +1,13 @@
+.c-product-card-list {
+  overflow: hidden;
+}
+
+.c-product-card-list__track {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  width: 1200px;
+  height: 300px;
+}
