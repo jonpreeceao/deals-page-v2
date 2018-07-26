@@ -2,11 +2,8 @@ import React, { Component, Fragment } from 'react'
 import Header from '../Header'
 import Heading from '../Heading'
 import ProductCardList from '../ProductCardList'
-<<<<<<< HEAD
 import TopDealProductCardList from '../TopDealProductCard'
-=======
 import SingleProduct from '../SingleProduct'
->>>>>>> 17e9258cbc6694da15bb2fd896b5cf793107add7
 import Spinner from '../Spinner'
 
 import styles from './styles.scss'
@@ -43,7 +40,7 @@ class App extends Component {
     return (
       <main className={styles.main}>
         <Header />
-        <TopDealProductCardList products={data} />
+        {/* <TopDealProductCardList products={data} /> */}
         {data.map((section, index) => (
           <Fragment>
             <Heading
