@@ -65,8 +65,10 @@
     "prettier": "^1.13.7",
     "regenerator-runtime": "^0.12.0",
     "sass-loader": "^7.0.3",
-    "stylelint": "^9.3.0",
+    "stylelint": "^9.4.0",
     "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^0.8.1",
+    "stylelint-preset-ao": "^1.0.1",
     "webpack": "4.16.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.4"
