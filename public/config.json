@@ -1,0 +1,10 @@
+{
+  "CatalogueQuery": {
+    "CategoryIds": [107, 108],
+    "Formatting": {
+      "PageSize": 12
+    },
+    "ProductStates": ["LiveProduct"]
+  },
+  "CompanyId": 1
+}
