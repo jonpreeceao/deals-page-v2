@@ -7,6 +7,7 @@ import Spinner from '../Spinner'
 
 import styles from './styles.scss'
 import { loadPageConfiguration, getProductData } from '../../data'
+import groupBy from '../../utils/groupby'
 
 class App extends Component {
   state = {
@@ -36,30 +37,39 @@ class App extends Component {
       return null
     }
 
+    var sections = groupBy(data, 'Heading')
+
     return (
       <main className={styles.main}>
         <Header />
-        {data.map((section, index) => (
-          <Fragment key={index}>
-            <Heading
-              key={section.heading}
-              heading={section.Heading}
-              // bgColor="#ededed"
-              isDark="true"
-            />
-            {section.IsSingleProduct ? (
-              <TopDealProductCardList
-                key={`${index}${section.Heading}`}
-                product={section.CatalogueProductDetail}
-              />
-            ) : (
-              <ProductCardList
-                key={`${index}${section.Heading}`}
-                products={section.Products}
-              />
-            )}
-          </Fragment>
-        ))}
+        {Object.keys(sections).map((sect, index) => {
+          return sections[sect].map((section, ind) => {
+            return (
+              <Fragment key={ind}>
+                {ind === 0 && (
+                  <Heading
+                    key={section.Heading}
+                    heading={section.Heading}
+                    isDark="true"
+                  />
+                )}
+                {section.IsSingleProduct ? (
+                  <TopDealProductCardList
+                    key={`${ind}${section.Heading}`}
+                    product={section.CatalogueProductDetail}
+                  />
+                ) : (
+                  <ProductCardList
+                    header={sections[sect].length > 1 ? `${section.Title}` : null}
+                    total={section.TotalProductCount}
+                    key={`${ind}${section.Heading}`}
+                    products={section.Products}
+                  />
+                )}
+              </Fragment>
+            )
+          })
+        })}
       </main>
     )
   }
