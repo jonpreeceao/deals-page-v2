@@ -1,0 +1,74 @@
+@import '../../globals/sass/variables';
+@import '../../globals/sass/mixins';
+
+.button {
+  @include ao-cta();
+}
+
+.inner {
+  @include aoContainer();
+}
+
+.header {
+  font-family: $aoFontBold;
+}
+
+.main {
+  background-color: #ededed;
+}
+
+.linethrough-dark {
+  display: block;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  margin: aoSpace(3) auto;
+
+  span {
+    display: inline-block;
+    padding: 0 20px;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+    color: #000000;
+    text-transform: uppercase;
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    border-top: 2px solid #000000;
+    top: 55%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+}
+
+.linethrough-light {
+  display: block;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  margin: aoSpace(3) auto;
+
+  span {
+    display: inline-block;
+    padding: 0 20px;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    border-top: 2px solid #ffffff;
+    top: 55%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+}

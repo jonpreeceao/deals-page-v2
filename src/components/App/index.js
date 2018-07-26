@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../Header'
+import Heading from '../Heading'
 import sampleProductData from '../ProductCardList/productData'
 import ProductCardList from '../ProductCardList'
 import styles from './styles.scss'
@@ -20,12 +21,10 @@ class App extends Component {
     return (
       <main className={styles.main}>
         <Header />
-        <h1>Hello, World!</h1>
-        <h2 className={styles.header}>Goodbye</h2>
-        <button className={styles.button} onClick={this.showMessage}>
-          Click Me
-        </button>
+        <Heading heading='Our Best Deals' bgColor='#ededed' isDark='true' />
         <ProductCardList products={productData} />
+        <Heading heading='Deal of the Day' bgColor='#ededed' isDark='true' />
+        <Heading heading='Explore More Deals' bgColor='#ededed' isDark='true' />
       </main>
     )
   }
