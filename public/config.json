@@ -5,7 +5,7 @@
     "queries": [
       {
         "CatalogueQuery": {
-          "CategoryIds": [107, 108],
+          "CategoryIds": [99],
           "Formatting": {
             "PageSize": 12
           },
@@ -40,7 +40,7 @@
       },
       {
         "CatalogueQuery": {
-          "CategoryIds": [107, 108],
+          "CategoryIds": [304, 305],
           "Formatting": {
             "PageSize": 12
           },
@@ -49,7 +49,7 @@
       },
       {
         "CatalogueQuery": {
-          "CategoryIds": [107, 108],
+          "CategoryIds": [250, 251],
           "Formatting": {
             "PageSize": 12
           },
