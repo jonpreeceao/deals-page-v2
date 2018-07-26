@@ -3,7 +3,7 @@ import styles from './styles'
 
 function TopDealProductCard(props) {
   const topDeal = props.product
-  debugger
+  console.log(topDeal)
   return (
     <div className={styles['c-product-card-list__item']}>
       <div className="sg-grid-example">
@@ -21,6 +21,10 @@ function TopDealProductCard(props) {
           <div className="o-flex-item u-grid--6">
             <div className="u-p--tiny">
               <h6>{topDeal.CatalogueProductSummary.Title}</h6>
+              <div className={styles.rating}>
+                <div className={'stars rating-sprite-' + topDeal.CatalogueProductSummary.Rating + '-0'} />
+                <div>{topDeal.CatalogueProductSummary.Rating} ({topDeal.CatalogueProductSummary.ReviewCount})</div>
+              </div>
             </div>
           </div>
           <div className="o-flex-item u-grid--12">
