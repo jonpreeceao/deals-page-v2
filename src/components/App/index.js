@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
+import Header from '../Header'
+import sampleProductData from '../ProductCardList/productData'
+import ProductCardList from '../ProductCardList'
 import styles from './styles.scss'
+
+const productData = sampleProductData.Response.Products
+
 
 class App extends Component {
   state = {
@@ -13,11 +19,13 @@ class App extends Component {
   render() {
     return (
       <main className={styles.main}>
+        <Header />
         <h1>Hello, World!</h1>
         <h2 className={styles.header}>Goodbye</h2>
         <button className={styles.button} onClick={this.showMessage}>
           Click Me
         </button>
+        <ProductCardList products={productData} />
       </main>
     )
   }

@@ -47,7 +47,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.scss']
+    extensions: ['.js', '.json', '.scss']
   },
   plugins: [
     new CopyWebpackPlugin([{ from: './public' }]),
