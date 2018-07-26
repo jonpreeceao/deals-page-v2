@@ -70,6 +70,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "ao-fe-fw": "git+https://bitbucket.org/drl_admin/ao.frontend.css-framework.git",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   },
