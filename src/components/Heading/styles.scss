@@ -1,75 +1,35 @@
 @import '../../globals/sass/variables';
 @import '../../globals/sass/mixins';
 
-.button {
-	@include ao-cta();
-}
-
-.inner {
-	@include aoContainer();
-}
-
-.header {
-	font-family: $aoFontBold;
-}
-
-.main {
-	// background-color: #ededed;
-}
-
-.linethrough-dark {
-	display: block;
-	position: relative;
+.c-heading-divide {
+	display: flex;
+	align-items: center;
 	width: 100%;
-	margin: aoSpace(3) auto;
+	padding: 16px 0;
+	color: #000000;
+
+	&::before,
+	&::after {
+		content: '';
+		flex: 1;
+		height: 1px;
+		background-color: #000000;
+	}
+
+	&::before {
+		margin-right: 16px;
+	}
+
+	&::after {
+		margin-left: 16px;
+	}
+}
+
+.c-heading-divide--dark {
 	color: #ffffff;
-	text-align: center;
 
-	span {
-		display: inline-block;
-		position: relative;
-		z-index: 2;
-		padding: 0 20px;
-		line-height: 1;
-		text-transform: uppercase;
-		background-color: #171717;
-	}
-
-	&::before {
-		content: '';
-		position: absolute;
-		top: 55%;
-		right: 0;
-		left: 0;
-		z-index: 1;
-		border-top: 2px solid;
-	}
-}
-
-.linethrough-light {
-	display: block;
-	position: relative;
-	width: 100%;
-	margin: aoSpace(3) auto;
-	text-align: center;
-
-	span {
-		display: inline-block;
-		position: relative;
-		z-index: 2;
-		padding: 0 20px;
-		line-height: 1;
-		color: #ffffff;
-		text-transform: uppercase;
-	}
-
-	&::before {
-		content: '';
-		position: absolute;
-		top: 55%;
-		right: 0;
-		left: 0;
-		z-index: 1;
-		border-top: 2px solid #ffffff;
+	&::before,
+	&::after {
+		background-color: #ffffff;
 	}
 }
