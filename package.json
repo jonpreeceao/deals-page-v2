@@ -40,6 +40,7 @@
     "babel-loader": "^8.0.0-beta",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
+    "dotenv-webpack": "^1.5.7",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
