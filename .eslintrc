@@ -12,6 +12,9 @@
     "browser": true,
     "jest/globals": true
   },
+  "rules": {
+    "react/prop-types": false
+  },
   "plugins": ["jest"],
   "extends": ["standard", "standard-react", "prettier", "plugin:jest/recommended"]
 }
