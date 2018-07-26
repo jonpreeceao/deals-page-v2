@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+import sampleProductData from '../ProductCardList/productData'
+import ProductCardList from '../ProductCardList'
 import styles from './styles.scss'
+
+const productData = sampleProductData.Response.Products
 
 class App extends Component {
   state = {
@@ -18,6 +22,7 @@ class App extends Component {
         <button className={styles.button} onClick={this.showMessage}>
           Click Me
         </button>
+        <ProductCardList products={productData} />
       </main>
     )
   }

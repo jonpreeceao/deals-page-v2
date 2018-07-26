@@ -967,6 +967,10 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
+"ao-fe-fw@git+https://bitbucket.org/drl_admin/ao.frontend.css-framework.git":
+  version "2.1.2-alpha"
+  resolved "git+https://bitbucket.org/drl_admin/ao.frontend.css-framework.git#06f0906727a35ac0b106426bd4e1417fddaea963"
+
 append-transform@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/append-transform/-/append-transform-1.0.0.tgz#046a52ae582a228bd72f58acfbe2967c678759ab"
