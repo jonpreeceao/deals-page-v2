@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import styles from './styles.scss'
 
-import alert from '../../decorators/alert'
-
 class App extends Component {
   state = {
     message: 'Hello, World!'
   }
 
-  @alert('Goodbye, World!')
   showMessage = () => {
     alert(this.state.message)
   }
@@ -17,8 +14,10 @@ class App extends Component {
     return (
       <header>
         <h1>Hello, World!</h1>
-        <h2 className={styles.module}>Goodbye</h2>
-        <button onClick={this.showMessage}>Click Me</button>
+        <h2 className={styles.header}>Goodbye</h2>
+        <button className={styles.button} onClick={this.showMessage}>
+          Click Me
+        </button>
       </header>
     )
   }

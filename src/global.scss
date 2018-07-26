@@ -1,0 +1,17 @@
+:global {
+  @import './globals/AMP/amp-global';
+
+  body {
+    margin: 0;
+  }
+
+  .ao-header {
+    .inner {
+      max-width: 1200px;
+    }
+
+    .ao-logo {
+      margin: 0;
+    }
+  }
+}

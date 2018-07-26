@@ -24,5 +24,5 @@ test('should show an alert with the message from the decorator', function() {
   button.simulate('click')
 
   expect(global.alert).toHaveBeenCalledTimes(1)
-  expect(global.alert).toHaveBeenCalledWith('Goodbye, World!')
+  expect(global.alert).toHaveBeenCalledWith('Hello, World!')
 })

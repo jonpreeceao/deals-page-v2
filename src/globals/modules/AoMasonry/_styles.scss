@@ -1,0 +1,748 @@
+$masonryContainerBg: #ffffff !default;
+$masonryContentBg: #efefef !default;
+$masonryContentColour: #333333 !default;
+$masonryContentTitleColour: $masonryContentColour !default;
+$masonryContentTitleArrowColour: $masonryContentColour !default;
+$masonryStaticBlockContentBg: #efefef !default;
+$masonryStaticBlockContentColour: #333333 !default;
+$masonryStaticBlockContentTitleColour: #333333 !default;
+$masonryStaticBlockContentArrowColour: #333333 !default;
+$masonryBaseImageHolderHeight: 150px !default;
+$masonryModalBg: rgba(0, 0, 0, 0.75) !default;
+$masonryModalContentBg: $masonryContentBg !default;
+$masonryModalContentColour: $masonryContentColour !default;
+$masonryModalContentTitleColour: $masonryContentColour !default;
+$masonryModalCloseColour: #000000 !default;
+$masonryModalBoxShadow: 0 3px 6px 2px rgba(0, 0, 0, 0.2) !default;
+
+@mixin cat-animation($name, $in) {
+	animation: $name 250ms normal forwards;
+	@if $in==true {
+		animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+	}
+	@else {
+		animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+}
+
+@keyframes cat-shrinkfromlarge {
+	0% {
+		transform: scale(1.06);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes cat-shrinkfromnormal {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(0.94);
+		opacity: 0;
+	}
+}
+
+@keyframes cat-growfromsmall {
+	0% {
+		transform: scale(0.94);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1.00);
+		opacity: 1;
+	}
+}
+
+@keyframes cat-growfromnormal {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1.06);
+		opacity: 0;
+	}
+}
+
+.masonry-container {
+	background-color: $masonryContainerBg;
+
+	&::before {
+		content: "mobile";
+		display: none; /* Prevent from displaying. */
+
+		@media (min-width: $landscape) {
+			content: "mobile:landscape";
+		}
+
+		@media (min-width: $tablet) {
+			content: "tablet";
+		}
+
+		@media (min-width: $desktop) {
+			content: "desktop";
+		}
+
+		@media (min-width: $uber) {
+			content: "desktop:uber";
+		}
+	}
+
+    .content-holder {
+		background-color: $masonryContentBg;
+		color: $masonryContentColour;
+    }
+
+	@media (min-width: $tablet) {
+		position: relative;
+	}
+	* {
+		box-sizing: border-box;
+	}
+	p {
+		@extend %p1;
+	}
+
+	.grid-loading-screen {
+		position: relative;
+		height: 100%;
+		min-height: 500px;
+		background: $masonryContainerBg;
+	}
+
+	.grid {
+		margin-right: aoSpace(-1);
+		margin-left: aoSpace(-1);
+		visibility: hidden;
+
+		@media (min-width: $desktop) {
+			margin-right: aoSpace(-1.25);
+			margin-left: aoSpace(-1.25);
+		}
+
+		&::after {
+			display: table;
+			content: '';
+			clear: both;
+		}
+
+		.grid-item {
+			padding-right: aoSpace(1);
+			padding-left: aoSpace(1);
+			padding-bottom: aoSpace(4);
+
+			@media (min-width: $landscape) {
+				float: left;
+				width: 50%;
+				padding-right: aoSpace(1);
+				padding-left: aoSpace(1);
+				// @include gallery(5 of 10);
+			}
+
+			@media (min-width: $desktop) {
+				width: percentage(1 / 3);
+				padding-right: aoSpace(1.25);
+				padding-left: aoSpace(1.25);
+				// @include gallery(4 of 12);
+			}
+
+			@media (min-width: $uber) {
+				width: 25%;
+				// @include gallery(3 of 12);
+			}
+
+			.item {
+				display: block;
+
+				+ .item {
+					margin-top: aoSpace(2);
+
+					@media (min-width: $tablet) {
+						margin-top: aoSpace(2);
+					}
+
+					@media (min-width: $desktop) {
+						margin-top: aoSpace(2.5);
+					}
+				}
+
+				&.item-link {
+					cursor: pointer;
+				}
+
+				&.static {
+					.block {
+						.content-holder {
+							background-color: $masonryStaticBlockContentBg;
+							color: $masonryStaticBlockContentColour;
+
+							.title-holder {
+
+								.title {
+									display: block;
+									color: $masonryStaticBlockContentTitleColour;
+
+									@include font-size(28);
+
+									@media (min-width: $tablet) {
+										@include font-size(29);
+									}
+
+									@media (min-width: $desktop) {
+										@include font-size(34);
+									}
+
+									&:after {
+										top: 6px;
+										padding-right: aoSpace(2);
+										@include font-size(20);
+										color: $masonryStaticBlockContentArrowColour;
+
+										@media (min-width: $tablet) {
+											padding-right: aoSpace(2);
+											@include font-size(22);
+										}
+
+										@media (min-width: $desktop) {
+											top: 8px;
+											@include font-size(24);
+										}
+									}
+								}
+							}
+						}
+					}
+					.rating, .price, .brandSprite {
+						display: none;
+					}
+				}
+				.block {
+					border-radius: 4px;
+					overflow: hidden;
+
+					.image-holder {
+						background-position: center center;
+						background-repeat: no-repeat;
+						background-size: cover;
+
+						@media (min-width: $landscape) {
+							&.hero {
+								min-height: $masonryBaseImageHolderHeight * 1.7;
+							}
+							&.bigger {
+								min-height: $masonryBaseImageHolderHeight * 1.3;
+							}
+							&.brandTall {
+								min-height: $masonryBaseImageHolderHeight * 1.4;
+							}
+							&.brandShort {
+								min-height: $masonryBaseImageHolderHeight;
+							}
+						}
+						&.noImage {
+							display: none;
+						}
+					}
+				}
+
+				@media (max-width: $landscape - 1px) {
+					.block {
+						display: table;
+						width: 100%;
+
+						.image-holder,
+						.content-holder {
+							display: table-cell;
+							height: 100%;
+						}
+
+						.image-holder {
+							width: 40%;
+						}
+
+						.content-holder {
+							width: 60%;
+						}
+
+						.image-holder.noImage + .content-holder {
+							width: 100%;
+						}
+					}
+
+					&.static {
+						.block {
+							display: block;
+
+							.image-holder,
+							.content-holder {
+								display: block;
+								width: auto;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.content-holder {
+		padding: aoSpace(2);
+		color: $masonryContentColour;
+
+		.title-holder {
+			color: $masonryContentTitleColour;
+
+			.title {
+				@extend %header-section;
+				position: relative;
+				padding-right: aoSpace(3);
+
+				&:after {
+					@include font-size(18);
+					display: inline-block;
+					font-family: 'ao-icons';
+					content: "\2c3";
+					float: right;
+					padding-right: aoSpace(2);
+					position: absolute;
+					right: -16px;
+					top: 0;
+					color: $masonryContentTitleArrowColour;
+
+					@media (min-width: $tablet) {
+						@include font-size(20);
+					}
+				}
+			}
+		}
+
+		.desc {
+			padding-top: aoSpace(1);
+			padding-bottom: aoSpace(2);
+			padding-right: aoSpace(2);
+
+			@media (min-width: $tablet) {
+				padding-right: aoSpace(3);
+			}
+
+			p {
+				@extend %p2;
+				margin-bottom: 10px;
+			}
+
+			p:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.brandSprite, .rating, .price {
+			display: none;
+			min-height: 10px;
+			overflow: hidden;
+		}
+
+		.brandSprite {
+			width: 32.20339%;
+			margin-right: 1.69492%;
+			margin-top: aoSpace(2);
+			background-size: contain;
+			background-position: 50% 50%;
+
+			@media (min-width: $landscape) and (max-width: $tablet - 1px) {
+				width: 48.27586%;
+				float: left;
+				margin-right: 3.44828%;
+				background-position: 0 0;
+				margin-left: aoSpace(1);
+			}
+		}
+
+		.ratingSpriteHolder {
+			margin-top: 0;
+		}
+
+		.rating {
+			width: 40.67797%;
+			float: left;
+			margin-right: 1.69492%;
+			margin-top: aoSpace(1);
+
+			@media (min-width: $landscape) and (max-width: $tablet - 1px) {
+				width: 48.27586%;
+				margin-right: 3.44828%;
+			}
+
+			p.customer-rating {
+				@extend %p4;
+				color: lighten($color-text, 20%);
+			}
+
+			.ratingSpriteHolder {
+				margin-left: -3px;
+				width: 85px;
+			}
+		}
+
+		.price {
+			@extend %p1;
+
+			width: 23.72881%;
+			float: right;
+			margin-right: 0;
+			color: lighten($color-text, 20%);
+			font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+			text-align: right;
+
+			@media (min-width: $landscape) and (max-width: $tablet - 1px) {
+				width: 48.27586%;
+				float: right;
+				margin-right: 0;
+				margin-top: -25px;
+			}
+
+			span {
+				@extend %p4;
+
+				&:after {
+					content: '\A';
+					white-space: pre;
+				}
+			}
+		}
+	}
+
+	.cat-shrinkfromlarge {
+		@include cat-animation(cat-shrinkfromlarge, true);
+	}
+	.cat-growfromnormal {
+		@include cat-animation(cat-growfromnormal, false);
+	}
+	.cat-growfromsmall {
+		display: block;
+		@include cat-animation(cat-growfromsmall, false);
+		.ie9 & {
+			opacity: 1;
+			transform: scale(1.00);
+		}
+	}
+	.cat-shrinkfromnormal {
+		display: block;
+		@include cat-animation(cat-shrinkfromnormal, true);
+		.ie9 & {
+			opacity: 0;
+			transform: scale(0.94);
+		}
+	}
+}
+
+body.modal-opened {
+	#modal-bg {
+		display: block;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 200;
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		background: $masonryModalBg;
+		float: left;
+	}
+	@media screen and (max-width: 767px) {
+		position: fixed;
+		width: 100%;
+		overflow: hidden;
+
+		.masonry-container {
+			overflow: hidden;
+		}
+
+		#modal-tech {
+			box-sizing: content-box;
+			overflow: visible;
+		}
+	}
+	.modal-tech-wrapper.shown {
+		z-index: 201;
+
+		#modal-tech {
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100vw;
+			height: auto;
+			overflow-y: scroll;
+
+			@media (min-width: $tablet) {
+				height: 100vh;
+				overflow-y: hidden;
+			}
+		}
+	}
+}
+
+.modal-tech-wrapper {
+	position: fixed; // Set as position: fixed if you want the modal to follow the window on scroll
+	display: none;
+	width: 100%;
+	height: 100%;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 50;
+
+	&.show {
+		display: block;
+	}
+
+	&.shown {
+		@include cat-animation(cat-fade-in, false);
+	}
+
+	#modal-tech {
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+
+		@media (min-width: $tablet) {
+			@include aoContainer();
+			padding-top: aoSpace(2) !important;
+			padding-left: aoSpace(3) !important;
+			padding-right: aoSpace(3) !important;
+			display: none;
+			z-index: 6;
+			background: transparent;
+			width: 100%;
+			overflow: auto;
+			margin: 0 auto !important;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			position: absolute;
+			max-width: 100%;
+			height: 100%;
+		}
+
+		.close-modal-tech {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: auto;
+			height: auto;
+			padding: aoSpace(2);
+			cursor: pointer;
+			@include font-size(20);
+
+
+			&:after {
+				content: '\58';
+				font-family: 'ao-icons';
+				color: $masonryModalCloseColour;
+			}
+
+			@media (min-width: $tablet) {
+				top: aoSpace(1);
+				right: aoSpace(1);
+			}
+		}
+
+		.modal-content {
+			position: relative;
+			width: 100%;
+			float: left;
+			display: none;
+			border-radius: 4px;
+			overflow: hidden;
+			box-shadow: $masonryModalBoxShadow;
+			background-color: $masonryModalContentBg;
+			color: $masonryModalContentColour;
+
+			&.show {
+				display: block;
+
+				@media (min-width: $tablet) {
+					display: table;
+				}
+			}
+
+			.modal-child-text {
+				padding: aoSpace(6) aoSpace(2) aoSpace(2) aoSpace(2);
+
+				@media (min-width: $landscape) {
+					padding: aoSpace(6) aoSpace(3) aoSpace(3) aoSpace(3);
+				}
+
+				@media (min-width: $tablet) {
+					display: table-cell;
+					vertical-align: top;
+					width: 35%;
+					padding: aoSpace(3) aoSpace(3);
+				}
+
+				@media (min-width: $desktop) {
+					padding: aoSpace(4) aoSpace(6);
+				}
+
+				h2, h3, h4, h5, h6 {
+					color: $masonryModalContentTitleColour;
+				}
+
+				h2 {
+					@extend %header-section;
+				}
+
+				h3 {
+					@extend %p1;
+					font-weight: normal;
+					font-family: oz;
+					padding-top: aoSpace(1);
+				}
+
+				p {
+					@extend %p3;
+					padding-top: aoSpace(1);
+				}
+
+				ul li {
+					@extend %p3;
+					display: flex;
+
+					&:first-child {
+						padding-top: 15px;
+					}
+
+					&:before {
+						content: "\2022";
+						padding-right: 10px;
+						display: inline-block;
+					}
+				}
+
+				.ao-cta {
+					margin-top: aoSpace(3);
+				}
+
+				.ao-cta + p {
+					padding-top: aoSpace(3);
+				}
+
+				.ao-cta + .ao-cta {
+					margin-top: aoSpace(1);
+				}
+
+				div a {
+					margin-top: aoSpace(1);
+				}
+			}
+
+			.modal-child-img {
+				background-size: cover;
+				background-position: center center;
+				margin: 0;
+				float: right;
+				width: 100%;
+				height: 256px;
+				height: 80vw;
+
+				@media (min-width: $landscape) {
+					height: 256px;
+					height: 60vw;
+				}
+
+				@media (min-width: $tablet) {
+					display: table-cell;
+					vertical-align: top;
+					float: none;
+					height: 530px;
+				}
+			}
+		}
+	}
+}
+
+.loadingSpinner {
+	height: 100px;
+	width: 100px;
+	position: absolute;
+	z-index: 2;
+	margin: -50px auto;
+	top: 50%;
+	left: 0;
+	right: 0;
+
+	.spinner {
+		height: 100px;
+		width: 100px;
+		position: absolute;
+		color: #8ecf27;
+		z-index: 3;
+		-webkit-animation: rotation .6s infinite linear;
+		-moz-animation: rotation .6s infinite linear;
+		-o-animation: rotation .6s infinite linear;
+		animation: rotation .6s infinite linear;
+		border: 12px solid rgba(127, 186, 35, .15);
+		border-top: 12px solid rgba(127, 186, 35, .8);
+		border-radius: 100%
+	}
+
+	.inner {
+		width: 50px;
+		height: 50px;
+		position: absolute;
+		top: 27px;
+		left: 25px;
+		font-size: 50px;
+		color: #8ecf27;
+		color: rgba(127, 186, 35, .8);
+		z-index: 4;
+	}
+
+	.spinnerText {
+		display: none;
+	}
+}
+
+@-webkit-keyframes rotation {
+	from {
+		-webkit-transform: rotate(0)
+	}
+	to {
+		-webkit-transform: rotate(359deg)
+	}
+}
+@-moz-keyframes rotation {
+	from {
+		-moz-transform: rotate(0)
+	}
+	to {
+		-moz-transform: rotate(359deg)
+	}
+}
+@-o-keyframes rotation {
+	from {
+		-o-transform: rotate(0)
+	}
+	to {
+		-o-transform: rotate(359deg)
+	}
+}
+@keyframes rotation {
+	from {
+		transform: rotate(0)
+	}
+	to {
+		transform: rotate(359deg)
+	}
+}

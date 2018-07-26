@@ -1,0 +1,55 @@
+$franchise-block-background-color: $color-background !default;
+$franchise-block-heading-color: $color-text !default;
+
+.franchises {
+	padding-top: aoSpace(1);
+	padding-bottom: aoSpace(1);
+	background-color: $franchise-block-background-color;
+	line-height: 1;
+	text-align: center;
+
+	h2 {
+		@extend %header-section;
+
+		display: inline-block;
+		margin-top: aoSpace(1);
+		margin-bottom: aoSpace(1);
+		color: $franchise-block-heading-color;
+		vertical-align: middle;
+	}
+
+	a, img {
+		display: block;
+		margin-top: aoSpace(1);
+		margin-right: auto;
+		margin-bottom: aoSpace(1);
+		margin-left: auto; /* stylelint-disable-line declaration-block-no-redundant-longhand-properties */
+		vertical-align: middle;
+
+		@media (min-width: $landscape) {
+			display: inline-block;
+			width: auto;
+			margin-right: aoSpace(2);
+			margin-left: aoSpace(2);
+		}
+	}
+
+	img {
+		width: auto;
+		height: 25px;
+
+		a > & {
+			margin: 0;
+		}
+
+		@media (min-width: $tablet) {
+			height: 30px;
+		}
+	}
+
+	.no-wrap {
+		@media (min-width: $landscape) {
+			white-space: nowrap;
+		}
+	}
+}

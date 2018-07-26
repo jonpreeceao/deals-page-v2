@@ -1,0 +1,77 @@
+.#{$flexContainer}{
+
+	display: flex;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	justify-content: space-between;
+	margin: $defaultGutter / -2;
+	flex-grow: 1;
+
+	&.vert-direction{
+		flex-direction: column;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	img{
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+}
+
+
+@for $currentRelWidth from 1 through $maxCol {
+
+	.#{$flexContainer}.cont-#{$currentRelWidth} > .#{$flexItem} {
+		@include define-width( $currentRelWidth, $maxCol )
+	}
+
+}
+
+@each $bp-el in $breakpoint-list {
+
+	$currentPxWidth: 	nth($bp-el,1);
+	$currentGutter: 	nth($bp-el,2);
+	$currentViewSlug: 	nth($bp-el,3);
+
+	.#{$flexContainer}{
+
+		@include ao-grid-bp($currentPxWidth){
+			margin: $currentGutter / -2;
+
+		}
+
+	}
+
+
+	//Containers bp definitions
+
+	@for $currentRelWidth from 1 through $maxCol {
+
+		.#{$flexContainer}.cont-#{$currentViewSlug}-#{$currentRelWidth} > .#{$flexItem} {
+
+			@include ao-grid-bp($currentPxWidth){
+				@include define-width( $currentRelWidth, $maxCol )
+			}
+
+		}
+
+	}
+
+}
+
+@each $noFlexClass in $noFlexClasses {
+	.#{$noFlexClass} .#{$flexContainer}{
+		display: block;
+		&::after,
+		&::before{
+			clear: both;
+			content: '';
+			display: table;
+		}
+	}
+}
+

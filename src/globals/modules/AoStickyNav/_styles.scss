@@ -1,0 +1,426 @@
+$ao-sticky-nav-z-index: 200;
+$ao-sticky-nav-open-menu-selector: 'body.aosnOpen';
+$ao-sticky-nav-panels-number: 10;
+$ao-sticky-nav-height: 40px !default;
+$ao-sticky-nav-tab-height: 54px !default;
+$ao-sticky-nav-tab-burger-font-size: 18 !default;
+$ao-sticky-nav-bg: #000000 !default;
+$ao-sticky-nav-font-colour: #ffffff !default;
+$ao-sticky-nav-hover: lighten($ao-sticky-nav-bg, 5%) !default;
+$ao-sticky-nav-mobile-tab: url("../img/tab-mobile.png") !default;
+
+%ctaArrow {
+	&:after {
+		display: inline;
+		content: '\2c3';
+		vertical-align: text-bottom;
+		font: {
+			family: ao-icons;
+		}
+		margin: {
+			left: 10px;
+		}
+	}
+}
+
+#AoStickyNav {
+	display: block;
+	position: relative;
+	width: 100%;
+	max-width: 20000px;
+	margin: 0 auto;
+	height: 0;
+	z-index: $ao-sticky-nav-z-index;
+	@media (min-width: $tablet) {
+		height: $ao-sticky-nav-height;
+		z-index: $ao-sticky-nav-z-index - 5;
+		user-select: none;
+		@include font-size(12);
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.aosnContainer {
+		position: relative;
+		height: 0;
+		width: 100%;
+		transform: translateZ(0);
+
+		@media (min-width: $tablet) {
+			height: $ao-sticky-nav-height;
+			background: {
+				color: $ao-sticky-nav-bg;
+			}
+			color: $ao-sticky-nav-font-colour;
+			text-align: center;
+		}
+
+		&.fixed {
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+
+			.aosnBranding {
+				img {
+					@media (min-width: $tablet) {
+					transform: translateY(0);
+					}
+				}
+			}
+		}
+	}
+
+	.navInner {
+		display: none;
+		@include aoContainer;
+
+		@media (min-width: $tablet) {
+			display: block;
+			height: $ao-sticky-nav-height;
+		}
+
+		ul {
+			@media (min-width: $tablet) {
+				display: none;
+			}
+
+			&.open {
+				@media (min-width: $tablet) {
+					display: block;
+					position: absolute;
+					top: 10px;
+					left: 100%;
+					width: 90%;
+					min-width: 140px;
+					padding: {
+						bottom: 15px;
+					}
+					background: {
+						color: $ao-sticky-nav-bg;
+					}
+					z-index: $ao-sticky-nav-z-index - 2;
+				}
+			}
+		}
+
+		.subLeft {
+			.open {
+				@media (min-width: $tablet) {
+					right: 100%;
+					left: auto;
+				}
+			}
+		}
+
+		li {
+			@media (min-width: $tablet) {
+				position: relative;
+				@include font-size(14);
+			}
+
+			a,
+			span {
+				@media (min-width: $tablet) {
+					display: inline-block;
+					width: 100%;
+					height: inherit;
+					padding: {
+						top: 15px;
+						right: 10px;
+						bottom: 15px;
+						left: 10px;
+					}
+				}
+			}
+
+			&:hover {
+				> a {
+					@media (min-width: $tablet) {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+
+		& > ul {
+			@media (min-width: $tablet) {
+				position: relative;
+				display: table;
+				width: 100%;
+				height: inherit;
+			}
+
+			& > li {
+				@media (min-width: $tablet) {
+					display: table-cell;
+					position: relative;
+					vertical-align: middle;
+					// height: inherit;
+					padding: 0;
+				}
+
+				& > a,
+				& > span {
+					@media (min-width: $tablet) {
+						padding: {
+							top: 12px;
+						}
+					}
+				}
+
+				& > ul {
+					&.open {
+						@media (min-width: $tablet) {
+							top: $ao-sticky-nav-height;
+							left: 50%;
+							transform: translateX(-50%);
+							border-radius: 0 0 4px 4px;
+						}
+					}
+				}
+
+				&.subLeft {
+					& > ul.open {
+						@media (min-width: $tablet) {
+							right: auto;
+							left: 50%;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	a {
+		color: inherit;
+	}
+
+	span {
+		@media (min-width: $tablet) {
+			cursor: default;
+		}
+	}
+
+	.aosnBranding {
+		display: block;
+		position: absolute;
+		width: 250px;
+		height: $ao-sticky-nav-tab-height;
+		top: 0;
+		right: 0;
+		transform: translateZ(0);
+		background: {
+			image: $ao-sticky-nav-mobile-tab;
+			repeat: no-repeat;
+			size: contain;
+			position: right top;
+		}
+		@media (min-width: $tablet) {
+			background-image: none;
+			position: absolute;
+			top: auto;
+			right: auto;
+			bottom: -$ao-sticky-nav-tab-height;
+			left: 50%;
+			width: 250px;
+			transform: translateX(-50%);
+			cursor: auto;
+			overflow: hidden;
+			background: {
+				position: center -1px;
+			}
+		}
+		z-index: 2;
+		cursor: pointer;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+		img {
+			display: none;
+			max-width: 100px;
+			max-height: 20px;
+			float: left;
+			margin: {
+				top: 11px;
+				left: 60px;
+			}
+			@media (min-width: $tablet) {
+				display: block;
+				height: inherit;
+				max-width: 250px;
+				max-height: 1000px;
+				display: block;
+				margin: -1px auto 0;
+				float: none;
+				clear: both;
+				transform: translateY(-100%);
+				transition: transform 150ms ease-out;
+			}
+		}
+
+		&:after {
+			$spacing: 0.5 * ($ao-sticky-nav-tab-height - $ao-sticky-nav-tab-burger-font-size * 1px);
+
+			content: "\34";
+			display: block;
+			float: right;
+			margin-top: $spacing;//18px;
+			margin-right: $spacing;
+			line-height: 1;
+			font-family: ao-icons;
+			@include font-size($ao-sticky-nav-tab-burger-font-size);
+			color: $ao-sticky-nav-font-colour;
+
+			@media (min-width: $tablet) {
+				display: none;
+			}
+		}
+
+		&.noBrand {
+			@media (min-width: $tablet) {
+				display: none;
+			}
+			img {
+				display: none;
+			}
+		}
+	}
+}
+
+.aosnMobileOverlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(#000000, 0.5);
+
+	#{$ao-sticky-nav-open-menu-selector} & {
+		display: block;
+		z-index: $ao-sticky-nav-z-index + 1;
+	}
+}
+
+.aosnMobilePanel {
+	display: block;
+	position: fixed;
+	width: 90%;
+	height: 100%;
+	top: 0;
+	padding: {
+		top: 10px;
+		right: 20px;
+		bottom: 10px;
+		left: 20px;
+	}
+	background: {
+		color: #ffffff;
+	}
+	overflow-y: hidden;
+	text-align: left;
+	text-size-adjust: none;
+	transform: translate($tablet + 1px, 0);
+	transform: translate3d($tablet + 1px, 0, 0);
+	transition: transform 400ms;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+	a,
+	span {
+		display: inline-block;
+		color: inherit;
+		width: 100%;
+		padding: {
+			top: 15px;
+			bottom: 15px;
+			left: 20px;
+		}
+		@extend %ctaArrow;
+	}
+
+	.btnBack {
+		display: block;
+		width: 100%;
+		height: 50px;
+		line-height: 40px;
+		@include font-size(16);
+		padding-bottom: 15px;
+		font-weight: 500;
+		color: $color-link;
+		cursor: pointer;
+
+		&:before {
+			font-family: ao-icons;
+			font-weight: 100;
+			@include font-size(22);
+			content: "\2c2";
+			margin: 0 6px 0 0;
+			vertical-align: middle;
+			position: relative;
+			top: -1px;
+		}
+	}
+
+	.navContainer {
+		overflow-x: hidden;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		position: absolute;
+		left: 0;
+		top: 55px;
+		bottom: 0;
+		width: 100%;
+		padding: {
+			bottom: 25px;
+		}
+		@include font-size(14);
+
+		ul {
+			display: block;
+
+			& > li {
+				display: block;
+				width: 100%;
+				border-bottom: {
+					style: solid;
+					width: 1px;
+					color: #cccccc;
+				}
+				cursor: pointer;
+
+				&:first-of-type {
+					border-top: {
+						style: solid;
+						width: 1px;
+						color: #cccccc;
+					}
+				}
+
+				& > ul {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&.open {
+		transform: translate(20px, 0);
+		transform: translate3d(20px, 0, 0);
+		transform: translate3d(10vw, 0, 0);
+	}
+	@media (min-width: $tablet) {
+		display: none;
+	}
+}
+
+#{$ao-sticky-nav-open-menu-selector} {
+	overflow: hidden;
+}
+@for $i from 1 through $ao-sticky-nav-panels-number {
+	#aosnPanel#{$i} {
+		z-index: $ao-sticky-nav-z-index + ($i + 1);
+	}
+}

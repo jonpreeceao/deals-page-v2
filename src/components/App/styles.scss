@@ -1,4 +1,10 @@
-.module {
-  font-family: 'Courier New', Courier, monospace;
-  color: yellow;
+@import '../../globals/sass/variables';
+@import '../../globals/sass/mixins';
+
+.button {
+  @include ao-cta();
+}
+
+.header {
+  font-family: 'ozBold';
 }

@@ -1,0 +1,17 @@
+@mixin ao-grid-bp($minWidth, $maxWidth: false) {
+
+	@if $maxWidth == false {
+		@media (min-width: $minWidth) { @content ; }
+	}@else{
+		@if $minWidth == false {
+			@media (max-width: $maxWidth) { @content ; }
+		}@else {
+			@media (min-width: $minWidth) and (max-width: $maxWidth) { @content ; }
+		}
+	}
+
+}
+
+@mixin define-width($currentRelWidth, $maxCol){
+	width: #{( $currentRelWidth * 100% / $maxCol)}
+}

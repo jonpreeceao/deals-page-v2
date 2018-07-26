@@ -1,0 +1,85 @@
+section.email-signup-widget {
+	width: auto;
+	margin: 0 10px;
+	@include susy-breakpoint($tablet) {
+		width: 100%;
+		margin: 0;
+	}
+	>.inner {
+		background-color: $color-background;
+		padding: 25px 12%;
+		margin-bottom: aoSpace();
+		border-radius: $border-radius;
+		text-align: center;
+	}
+	h2 {
+		text-align: center;
+		margin: 0 0 15px 0;
+		@include font-size(16);
+		@include susy-breakpoint($tablet) {
+			@include font-size(24);
+		}
+	}
+	.submit-email {
+		text-align: center;
+		span {
+			top: 15px;
+			text-align: left;
+		}
+	}
+	%error {
+		color: #b42129;
+		display: none;
+		margin-top: 25px;
+		@include font-size(13);
+		font-weight: bold;
+		text-align: center;
+		@include susy-breakpoint($tablet) {
+			margin-top: 20px;
+		}
+	}
+	%success {
+		color: #ffffff;
+		display: none;
+		margin-top: 25px;
+		padding: aoSpace(2);
+		background: {
+			color: $green;
+		}
+		@include font-size(16);
+		font-weight: bold;
+		text-align: center;
+		border-radius: $border-radius;
+	}
+	.email-error {
+		@extend %error;
+		&.show {
+			display: block;
+		}
+	}
+	.email-success {
+		@extend %success;
+		&.show {
+			display: block;
+		}
+	}
+	input {
+		display: inline-block;
+		&[type="email"] {
+			height: 40px;
+			width: 100%;
+			max-width: 300px;
+			margin-right: 20px;
+			border-radius: 2px;
+			border: 1px solid #cecece;
+			padding: 5px 10px;
+			@include font-size(16);
+			@include susy-breakpoint($tablet) {
+				width: 70%;
+			}
+		}
+		&[type="submit"] {
+			border: none;
+		}
+	}
+}

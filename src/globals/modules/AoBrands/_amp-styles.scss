@@ -1,0 +1,48 @@
+$brand-block-background-color: $color-background !default;
+$brand-block-heading-color: $color-text !default;
+
+.brands {
+	padding-top: aoSpace(1);
+	padding-bottom: aoSpace(1);
+	background-color: $brand-block-background-color;
+	line-height: 1;
+	text-align: center;
+
+	h2 {
+		display: inline-block;
+		margin-top: aoSpace(1);
+		margin-bottom: aoSpace(1);
+		color: $brand-block-heading-color;
+		vertical-align: middle;
+	}
+
+	a {
+		display: block;
+		margin-top: aoSpace(1);
+		margin-bottom: aoSpace(1);
+		vertical-align: middle;
+
+		@media (min-width: $landscape) {
+			display: inline-block;
+			margin-right: aoSpace(2);
+			margin-left: aoSpace(2);
+		}
+	}
+
+	a > & {
+		margin: 0;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+	}
+
+	.no-wrap {
+		@media (min-width: $landscape) {
+			white-space: nowrap;
+		}
+	}
+}

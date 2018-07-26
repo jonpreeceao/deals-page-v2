@@ -1,0 +1,46 @@
+{% macro createSubMenu(navItem, parentId, level) %}
+    {# {{ navItem | dump }} #}
+    {# {% if navItem.navLink %}
+        <a href="{{ navItem.navLink }}"{{ ' data-tags="' + navItem.tags + '"' if navItem.tags }}>{{ navItem.navText }}</a>
+    {% else %} #}
+        <span>{{ navItem.navText }}</span>
+    {# {% endif %} #}
+    <ul id="aosnSubmenu{{ parentId }}" data-menulevel="{{ level }}">
+        {% for subItem in navItem.subItems %}
+            <li {% if subItem.subItems %}data-submenu="aosnSubmenu{{ parentId+'-'+loop.index }}"{% endif %}>
+                {% if subItem.subItems %}
+                    {{ createSubMenu(subItem, parentId+'-'+loop.index, level + 1) }}
+                {% else %}
+                    <a href="{{ subItem.navLink }}"{{ ' data-tags="' + subItem.tags + '"' if subItem.tags }}>{{ subItem.navText }}</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+<div id="AoStickyNav">
+    <nav class="aosnContainer">
+        <div id="aosnNav" class="navInner">
+            <ul id="aosnTopLevelMenu">
+                {% for navItem in data.navItems %}
+                    <li {% if navItem.subItems %}data-submenu="aosnSubmenu{{ loop.index }}"{% if (loop.index / loop.length) > 0.6 %} class="subLeft"{% endif %}{% endif %}>
+                        {% if navItem.subItems %}
+                            {{ createSubMenu(navItem, loop.index, 1) }}
+                        {% else %}
+                            <a href="{{ navItem.navLink }}"{{ ' data-tags="' + navItem.tags + '"' if navItem.tags }}>{{ navItem.navText }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if data.brandImageAlt %}
+            {% set brandImageAlt = data.brandImageAlt %}
+        {% else %}
+            {% set brandImageAlt = data.name %}
+        {% endif %}
+        <div class="aosnBranding{% if not data.brandImage %} noBrand{% endif %}">
+            {% if data.brandImage %}<img data-srcset="false" data-cdn="true" src="{{ config.imageLocation }}{{ data.brandImage }}" alt="{{ brandImageAlt }}">{% endif %}
+            <div class="burgerIcon"></div>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,62 @@
+.footer-proposition {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	background-color: #efefef;
+	background-position: 50%;
+	background-size: cover;
+	text-align: center;
+	box-sizing: border-box;
+
+	.prop-container {
+		display: block;
+		position: relative;
+		overflow: hidden;
+		padding-top: 8px;
+		background-color: #ffffff;
+		color: #333333;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			height: 8px;
+			background-color: $green;
+		}
+
+		a {
+			display: block;
+			position: relative;
+			width: 100%;
+			margin-right: 0;
+			margin-left: 0;
+			padding-top: 32px;
+			padding-right: 24px;
+			padding-left: 16px;
+			background: #ffffff;
+			color: #333333;
+			float: left;
+			text-decoration: none;
+			box-sizing: border-box;
+		}
+
+		h3 {
+			font-weight: 700;
+			font-size: 16px;
+			font-size: 1rem;
+		}
+
+		p {
+			margin-top: 16px;
+			color: #333333;
+			font-weight: 400;
+			font-size: 12px;
+			font-size: 0.75rem;
+		}
+	}
+}

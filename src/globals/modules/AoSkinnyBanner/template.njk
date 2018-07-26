@@ -1,0 +1,51 @@
+{# {% set isJpegRegex = r/\.jpg$/gmi %}
+{% set isPngRegex = r/\.png$/gmi %} #}
+
+{# Find the file extension of the images, e.g. .jpg #}
+{% set fileExtensionMobile = '.' + helperMethods.getFileExtension(data.imgMobile) %}
+{% set fileExtensionDesktop = '.' + helperMethods.getFileExtension(data.imgDesktop) %}
+
+{# Convert img/example.jpg to img/example #}
+{% set rawPathMobile = data.imgMobile | replace(fileExtensionMobile, '') %}
+{% set rawPathDesktop = data.imgDesktop | replace(fileExtensionDesktop, '') %}
+
+{# Set paths for 1x, 2x and image .webp versions #}
+{% set imgMobile = data.imgMobile %}
+{% set imgMobile2x = rawPathMobile + '_2x' + fileExtensionMobile %} {# Convert img/example.jpg to img/example_2x.jpg #}
+{% set imgMobileWebp = rawPathMobile + '.webp' %} {# Convert img/example.jpg to img/example.webp #}
+{% set imgMobileWebp2x = rawPathMobile + '_2x.webp' %} {# Convert img/example.jpg to img/example_2x.webp #}
+
+{% set imgDesktop = data.imgDesktop %}
+{% set imgDesktop2x = rawPathDesktop + '_2x' + fileExtensionDesktop %} {# Convert img/example.jpg to img/example_2x.jpg #}
+{% set imgDesktopWebp = rawPathDesktop + '.webp' %} {# Convert img/example.jpg to img/example.webp #}
+{% set imgDesktopWebp2x = rawPathDesktop + '_2x.webp' %} {# Convert img/example.jpg to img/example_2x.webp #}
+
+
+{# <style>.brand-banner-promo{margin:0 auto;background-color:#EBEBEB}@media (min-width:1200px){.brand-banner-promo .promotion-inner{max-width:100%;margin-left:auto;margin-right:auto;padding:0 3.44828%}.brand-banner-promo .promotion-inner:after{content:"";display:block;clear:both}}@media (min-width:1200px) and (min-width:544px){.brand-banner-promo .promotion-inner{max-width:768px;margin-left:auto;margin-right:auto}.brand-banner-promo .promotion-inner:after{content:" ";display:block;clear:both}}@media (min-width:1200px) and (min-width:768px){.brand-banner-promo .promotion-inner{max-width:768px;margin-left:auto;margin-right:auto;padding:0 1.69492%}.brand-banner-promo .promotion-inner:after{content:" ";display:block;clear:both}}@media (min-width:1200px) and (min-width:990px){.brand-banner-promo .promotion-inner{max-width:990px;margin-left:auto;margin-right:auto;padding:0 1.1236%}.brand-banner-promo .promotion-inner:after{content:" ";display:block;clear:both}}@media (min-width:1200px) and (min-width:1200px){.brand-banner-promo .promotion-inner{max-width:1200px;margin-left:auto;margin-right:auto;padding:0 .84034%}.brand-banner-promo .promotion-inner:after{content:" ";display:block;clear:both}}.brand-banner-promo img{width:100%}.brand-banner-promo .brand-banner-mobile{display:block;max-width:400px;margin:0 auto}.brand-banner-promo .brand-banner-desktop{display:none}@media (min-width:544px){.brand-banner-promo .brand-banner-mobile{display:none}.brand-banner-promo .brand-banner-desktop{display:block}}</style> #}
+
+<!-- htmlmin:ignore -->
+
+{% if data.link %}
+	{% set startTag = 'a href="' + data.link + '"'  %}
+	{% set endTag = "/a" %}
+{% else %}
+	{% set startTag = 'div' %}
+	{% set endTag = '/div' %}
+{% endif %}
+
+<section id="{{ section.sectionId }}" class="brand-banner-promo" style="background-color: #{{ data.color | replace('#', '') | lower }}">
+    <{{startTag}}>
+        <div class="inner">
+            <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source type="image/webp" srcset="{{ imgDesktopWebp2x }} 1x, {{ imgDesktopWebp2x }} 2x" media="(min-width: 768px)">
+                    <source type="image/jpeg" srcset="{{ imgDesktop }} 1x, {{ imgDesktop2x }} 2x" media="(min-width: 768px)">
+                    <source type="image/webp" srcset="{{ imgMobileWebp }} 1x, {{ imgMobileWebp2x }} 2x">
+                <!--[if IE 9]></video><![endif]-->
+                <img srcset="{{ imgMobile }} 1x, {{ imgMobile2x }} 2x" alt="{{ data.alt }}">
+            </picture>
+        </div>
+	<{{endTag}}>
+</section>
+
+<!-- htmlmin:ignore -->

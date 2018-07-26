@@ -1,0 +1,196 @@
+$propositionFooterBgColour: $color-background !default;
+
+section.footer-proposition {
+	@extend %row;
+
+	padding-top: aoSpace(4);
+	padding-bottom: aoSpace(4);
+	text-align: center;
+	background-color: $propositionFooterBgColour;
+
+	@media (min-width: $tablet) {
+		padding-top: aoSpace(6);
+		padding-bottom: aoSpace(9);
+	}
+
+	.inner {
+		@include aoContainer;
+
+		&.props {
+			margin-top: aoSpace(4);
+		}
+
+		@media (min-width: $uber) {
+			max-width: $desktop;
+		}
+	}
+
+	.merch {
+		.merch-container {
+			margin-right: aoSpace(-0.5);
+			margin-left: aoSpace(-0.5);
+			font-size: 0;
+
+			@media (min-width: $tablet) {
+				margin-right: aoSpace(-1);
+				margin-left: aoSpace(-1);
+			}
+		}
+
+		a {
+			display: block;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		.promotion {
+			display: inline-block;
+			width: percentage(1 / 3);
+			padding-right: aoSpace(0.5);
+			padding-left: aoSpace(0.5);
+
+			@media (min-width: $tablet) {
+				padding-right: aoSpace(1);
+				padding-left: aoSpace(1);
+			}
+		}
+
+		&.promo-count-2 {
+			.promotion {
+				@media (min-width: $landscape) {
+					width: percentage(1 / 2);
+				}
+			}
+		}
+
+		&.space {
+			margin: {
+				top: aoSpace(3);
+			}
+		}
+	}
+
+	.prop-container {
+		display: block;
+		overflow: hidden;
+
+		background: {
+			color: #ffffff;
+		}
+
+		@media (min-width: $tablet) {
+			display: table;
+		}
+
+		a {
+			display: block;
+			position: relative;
+			padding-right: aoSpace(3);
+			padding-left: aoSpace(2);
+			background: #ffffff;
+
+			@media (min-width: $landscape) {
+				float: left;
+				width: 50%;
+				padding-right: 1.66667%;
+				padding-bottom: aoSpace(4);
+				padding-left: 1.66667%;
+			}
+
+			@media (min-width: $tablet) {
+				display: table-cell;
+				float: none;
+				width: 25%;
+				padding-right: 0.83333%;
+				padding-left: 0.83333%;
+			}
+
+			&::before {
+				@media (min-width: $tablet) {
+					content: ' ';
+					position: absolute;
+					top: 0;
+					right: 0;
+					left: 0;
+					height: aoSpace();
+					background-color: $green;
+				}
+			}
+
+			&:first-of-type, &:nth-child(3n -1) {
+				@media (min-width: $landscape) and (max-width: $tablet - 1px) {
+					padding: {
+						bottom: 0;
+					}
+				}
+			}
+
+			&:first-of-type {
+				&::before {
+					content: ' ';
+					position: absolute;
+					top: 0;
+					right: 0;
+					left: 0;
+					height: aoSpace();
+					background-color: $green;
+				}
+			}
+
+			&:nth-child(3n -1) {
+				&::before {
+					@media (min-width: $landscape) {
+						content: ' ';
+						position: absolute;
+						top: 0;
+						right: 0;
+						left: 0;
+						height: aoSpace();
+						background-color: $green;
+					}
+				}
+			}
+
+			&:nth-child(4n-1) {
+				@media (min-width: $landscape) and (max-width: $tablet - 1px) {
+					clear: left;
+				}
+			}
+
+			&:last-of-type {
+				padding-bottom: aoSpace(4);
+			}
+		}
+
+		img {
+			display: inline-block;
+			width: auto;
+			max-height: 65px;
+			margin-top: aoSpace(4);
+		}
+
+		h3 {
+			@extend %header-module;
+
+			margin-top: aoSpace(2);
+			color: $color-text;
+		}
+
+		p {
+			@extend %p3;
+
+			margin-top: aoSpace(2);
+			color: $color-text;
+		}
+	}
+
+	h2 {
+		@extend %header-sub;
+
+		color: $color-text;
+	}
+}

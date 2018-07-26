@@ -1,0 +1,39 @@
+{% if (data) and (data.products) %}
+	{% set products = data.products %}
+	<div id="{{ section.sectionId }}" class="ao-xscroll-container">
+		<div class="inner">
+			<div class="stage-container">
+				<div class="loading-container">
+					<div class="loading-inner">
+						<div class="loading-content">
+						</div>
+					</div>
+				</div>
+				<div class="products-container">
+					{% for product in products %}
+						{% set imgAlt = product.title %}
+						{% if product.alt %}
+							{% set imgAlt = product.alt %}
+						{% endif %}
+						<div class="product" data-product-sku="{{ product.sku }}">
+							<a href="" class="product-content">
+								<div class="image-content">
+									<img class="product-image" data-product-image src="{{ product.imgSrc }}" alt="{{ imgAlt }}">
+								</div>
+								<div class="info-content">
+									<span class="product-title" data-product-title>{{ product.title }}</span>
+									<div class="product-price" data-product-price></div>
+									<div class="product-reviews" data-product-review>
+										<div class="review-score" data-product-review-score></div>
+										<div class="review-stars" data-product-review-stars></div>
+									</div>
+									{# <a href="{{ product.ctaLink }}" class="ao-cta" data-product-cta>{{ product.ctaText }}</a> #}
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}

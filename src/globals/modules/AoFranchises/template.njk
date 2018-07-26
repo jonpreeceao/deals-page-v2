@@ -1,0 +1,36 @@
+{% macro franchiseImage(lang, name, isLightVariant) %}
+	<img src="//media.ao.com/{{ lang }}/franchise-logos/{{ name | toBrandSprite }}{{ "_light" if isLightVariant }}.png" alt="{{ name }}"/>
+{% endmacro %}
+
+{% if section.isLightVariant %}
+	{% set isLightVariant = section.isLightVariant %}
+{% elif item.isLightVariant %}
+	{% set isLightVariant = item.isLightVariant %}
+{% else %}
+	{% set isLightVariant = false %}
+{% endif %}
+
+<section class="franchises">
+	<div class="inner">
+		{% for franchise in data.franchises %}
+			{% if loop.first %}
+				<h2>Shop by {{ data.title }}</h2>
+			{% endif %}
+			{% if loop.index === (loop.length - 1) %}
+				<span class="no-wrap">
+				{% endif %}
+				{% if franchise.url %}
+					<a href="{{ franchise.url }}">
+						{{ franchiseImage(config.lang, franchise.name, isLightVariant) }}
+					</a>
+				{% else %}
+					{{ franchiseImage(config.lang, franchise.name, isLightVariant) }}
+				{% endif %}
+				{% if loop.index === loop.length %}
+				</span>
+			{% endif %}
+		{% endfor %}
+	</div>
+</section>
+
+{% set isLightVariant = false %}

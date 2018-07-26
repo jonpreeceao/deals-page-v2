@@ -1,0 +1,66 @@
+
+//default
+
+.#{$flexItem}{
+
+	width: 100%;
+	padding:  ($defaultGutter / 2);
+	display: flex;
+
+	&.grow {
+		flex-grow: 1;
+	}
+
+}
+
+
+@for $currentRelWidth from 1 through $maxCol {
+
+	.#{$flexContainer} > .item-#{$currentRelWidth}.#{$flexItem}{
+		@include define-width( $currentRelWidth, $maxCol )
+	}
+
+}
+
+
+@each $bp-el in $breakpoint-list {
+
+	$currentPxWidth: 	nth($bp-el,1);
+	$currentGutter: 	nth($bp-el,2);
+	$currentViewSlug: 	nth($bp-el,3);
+
+	.#{$flexItem}{
+		@include ao-grid-bp($currentPxWidth){
+			padding:  ($currentGutter / 2);
+		}
+	}
+
+	//grid ordering
+
+	@for $currentElementPosition from 1 through $maxOrderingNumber {
+		.ord-#{$currentViewSlug}-#{$currentElementPosition}{
+			@include ao-grid-bp($currentPxWidth){
+				order: $currentElementPosition
+			}
+		}
+	}
+
+	//cols bp definitions
+
+	@for $currentRelWidth from 1 through $maxCol {
+		.#{$flexContainer} > .item-#{$currentViewSlug}-#{$currentRelWidth}.#{$flexItem}{
+			@include ao-grid-bp($currentPxWidth){
+				@include define-width( $currentRelWidth, $maxCol )
+			}
+		}
+	}
+
+}
+
+//fallbacks
+@each $noFlexClass in $noFlexClasses {
+	.#{$noFlexClass} .#{$flexItem} {
+		float: left;
+		display: block;
+	}
+}

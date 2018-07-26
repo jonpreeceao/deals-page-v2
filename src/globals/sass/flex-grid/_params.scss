@@ -1,0 +1,17 @@
+// Grid Params
+
+$flexContainer: flex-container !default;
+$flexItem: flex-item !default;
+$noFlexClasses: 'no-flexwrap' !default; // e.g. 'no-flexwrap' 'no-flexbox'
+
+$maxOrderingNumber: 12 !default;
+$maxCol: 12 !default;
+
+$defaultGutter: 15px !default;
+
+$breakpoint-list: (
+	($landscape, 8px, lan),
+	($tablet, 8px, tab),
+	($desktop, 16px, des),
+	($uber, 20px, ube)
+) !default;

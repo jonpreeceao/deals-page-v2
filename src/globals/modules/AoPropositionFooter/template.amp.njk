@@ -1,0 +1,74 @@
+<section class="footer-proposition">
+
+	{% if data.header %}
+	<div class="inner">
+		<h2>{{data.header}}</h2>
+	</div>
+	{% endif %}
+
+	<div class="inner {{ "props" if (data.header or data.promos) }}">
+		<div class="prop-container">
+
+{#1st bock#}
+
+			{% if data.variant == 'computing'%}
+			<a href="/help-and-advice/Help-With-My-Order/delivery">
+				<amp-img width="151" height="65" src="//media.ao.com/international/components/proposition-footer/en-GB/delivery.png" alt="Free delivery on all products"></amp-img>
+				<h3>Free delivery</h3>
+				<p>Super-quick Next Day delivery also available</p>
+			</a>
+			{% elif data.variant == 'mda'%}
+			<a href="/help-and-advice/Help-With-My-Order/delivery">
+				<amp-img width="151" height="65" src="//media.ao.com/international/components/proposition-footer/en-GB/delivery.png" alt="Free delivery on all products"></amp-img>
+				<h3>Free delivery</h3>
+				<p>Next Day delivery also available 7 days a week, or choose a date up to 50 days away</p>
+			</a>
+			{% else %}
+			<a href="/help-and-advice/Help-With-My-Order/delivery">
+				<amp-img width="151" height="65" src="//media.ao.com/international/components/proposition-footer/en-GB/delivery.png" alt="Free delivery on all products"></amp-img>
+				<h3>Free delivery</h3>
+				<p>Next Day delivery also available 7 days a week</p>
+			</a>
+			{% endif %}
+
+{#2nd block#}
+
+			<a href="https://www.trustpilot.com/review/www.ao.com" target="_blank" rel="noopener noreferrer">
+				<amp-img width="151" height="65" src="//media.ao.com/international/components/proposition-footer/en-GB/trust.png" alt="Trusted by you"></amp-img>
+				<h3>Trusted by you</h3>
+				<p>Rated Excellent by over 70,000 happy&nbsp;customers</p>
+			</a>
+
+{#3rd block#}
+
+			{% if data.variant == 'mda'%}
+			<a href="/help-and-advice/Help-With-My-Order/cooking-installation">
+				<amp-img width="151" height="65" src="//media.ao.com/international/components/proposition-footer/en-GB/installation.png" alt="Hassle-free installation"></amp-img>
+				<h3>Hassle-free installation</h3>
+				<p>Our experts deliver and install 100s of appliances every day</p>
+			</a>
+			{% elif data.variant == 'sda'%}
+			<a href="/help-and-advice/help-with-my-order/click-and-collect">
+				<amp-img width="151" height="65" src="//media.ao.com/international/components/proposition-footer/en-GB/collect.png" alt="Click + Collect"></amp-img>
+				<h3>Click + Collect</h3>
+				<p>Collect your item free next day with thousands of local Collect shops available</p>
+			</a>
+			{% else %}
+			<a href="/help-and-advice/help-with-my-order/finance">
+				<amp-img width="151" height="65" src="//media.ao.com/international/components/proposition-footer/en-GB/bnpl.png" alt="Spread the cost"></amp-img>
+				<h3>Spread the cost</h3>
+				<p>Finance options available on all products over £249, including Buy Now, Pay Later</p>
+			</a>
+			{% endif %}
+
+{#4th block#}
+
+			<a href="/help-and-advice/help-with-my-order/price-match-promise">
+				<amp-img width="151" height="65" src="//media.ao.com/international/components/proposition-footer/en-GB/which.png" alt="Recommended"></amp-img>
+				<h3>Price Match Promise</h3>
+				<p>We'll match all retailers,<br>even in the sales!</p>
+			</a>
+		</div>
+	</div>
+</section>
+

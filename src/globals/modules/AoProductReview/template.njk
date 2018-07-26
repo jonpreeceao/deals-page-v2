@@ -1,0 +1,21 @@
+<section class="ao-product-review {{ data.bgColour }}" id="{{ section.sectionId }}">
+	<div class="inner">
+		<div class="review-wrapper {{ data.alignImage }}">
+			<div class="star-rating">
+				<span class="stars rating-sprite-{{ data.score | toFixed(1) | replace('.', '-') }}"></span>
+				<p class="brand-name">{{ data.brandName }}</p>
+				<p class="product-description">{{ data.productTitle }}</p>
+			</div>
+			<div class="review-score">
+				<span class="score">{{ data.score }}</span><span class="total">/&nbsp;5</span>
+			</div>
+			<div class="review-copy">
+				<h3>{{ data.reviewTitle }}</h3>
+				<q class="review-quote">{{ data.quote }}</q>
+			</div>
+			{% if data.imageSrc %}
+				<div class="review-img" style="background-image: url('{{ data.imageSrc }}')"></div>
+			{% endif %}
+		</div>
+	</div>
+</section>

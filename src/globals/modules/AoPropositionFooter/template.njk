@@ -1,0 +1,221 @@
+{% set lang = config.lang or data.lang %}
+
+{% if (lang == "en-GB") %}
+
+	<section id="ao-proposition-footer" class="footer-proposition">
+
+		{% if data.header %}
+			<div class="inner">
+				<h2>{{data.header}}</h2>
+			</div>
+		{% endif %}
+
+		<!-- htmlmin:ignore -->
+
+		{% if data.promos %}
+			<div class="inner merch susy-fix {{ " space" if data.header }} promo-count-{{ data.promos.length }}">
+
+				<div class="merch-container">
+					{% for promo in data.promos %}
+						<div class="promotion">
+							<a href="{{ promo.url }}">
+								<img src="{{ promo.image }}" alt="{{ promo.alt }}">
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+				</div>
+
+			</div>
+		{% endif %}
+
+		<!-- htmlmin:ignore -->
+
+		<div class="inner {{ " props" if (data.header or data.promos) }}">
+			<div class="propContainer">
+
+				{#1st block#}
+
+				{% if data.variant == 'computing'%}
+					<a href="/help-and-advice/Help-With-My-Order/delivery">
+						<img src="//media.ao.com/international/components/proposition-footer/en-GB/delivery.png" alt="Free delivery on all products">
+						<h3>Free delivery</h3>
+						<p>Super-quick Next Day delivery also available</p>
+					</a>
+				{% elif data.variant == 'mda'%}
+					<a href="/help-and-advice/Help-With-My-Order/delivery">
+						<img src="//media.ao.com/international/components/proposition-footer/en-GB/delivery.png" alt="Free delivery on all products">
+						<h3>Free delivery</h3>
+						<p>Next Day delivery also available 7 days a week, or choose a date up to 50 days away</p>
+					</a>
+				{% else %}
+					<a href="/help-and-advice/Help-With-My-Order/delivery">
+						<img src="//media.ao.com/international/components/proposition-footer/en-GB/delivery.png" alt="Free delivery on all products">
+						<h3>Free delivery</h3>
+						<p>Next Day delivery also available 7 days a week</p>
+					</a>
+				{% endif %}
+
+				{#2nd block#}
+
+				<a href="https://www.trustpilot.com/review/www.ao.com" target="_blank" rel="noopener noreferrer">
+					<img src="//media.ao.com/international/components/proposition-footer/en-GB/trust.png" alt="Trusted by you">
+					<h3>Trusted by you</h3>
+					<p>Rated Excellent by over 100,000 happy&nbsp;customers</p>
+				</a>
+
+				{#3rd block#}
+
+				{% if data.variant == 'mda'%}
+					<a href="/help-and-advice/Help-With-My-Order/cooking-installation">
+						<img src="//media.ao.com/international/components/proposition-footer/en-GB/installation.png" alt="Hassle-free installation">
+						<h3>Hassle-free installation</h3>
+						<p>Our experts deliver and install 100s of appliances every day</p>
+					</a>
+				{% elif data.variant == 'sda'%}
+					<a href="/help-and-advice/help-with-my-order/click-and-collect">
+						<img src="//media.ao.com/international/components/proposition-footer/en-GB/collect.png" alt="Click + Collect">
+						<h3>Click + Collect</h3>
+						<p>Collect your item free next day with thousands of local Collect shops&nbsp;available</p>
+					</a>
+				{% else %}
+					<a href="/help-and-advice/help-with-my-order/finance">
+						<img src="//media.ao.com/international/components/proposition-footer/en-GB/bnpl.png" alt="Spread the cost">
+						<h3>Spread the cost</h3>
+						<p>Finance options available on all products over £199, including Buy Now, Pay Later</p>
+					</a>
+				{% endif %}
+
+				{#4th block#}
+
+				<a href="/help-and-advice/help-with-my-order/price-match-promise">
+					<img src="//media.ao.com/international/components/proposition-footer/en-GB/which.png" alt="Recommended">
+					<h3>Price Match Promise</h3>
+					<p>We'll match all retailers,<br>even in the sales!</p>
+				</a>
+			</div>
+		</div>
+	</section>
+
+{% elif (lang == "de-DE") %}
+
+	<section class="footer-proposition">
+
+		{% if data.header %}
+			<div class="inner">
+				<h2>{{data.header}}</h2>
+			</div>
+		{% endif %}
+
+		<!-- htmlmin:ignore -->
+
+		{% if data.promos %}
+			<div class="inner merch susy-fix {{ " space" if data.header }} promo-count-{{ data.promos.length }}">
+
+				<div class="merch-container">
+					{% for promo in data.promos %}
+						<div class="promotion">
+							<a href="{{ promo.url }}">
+								<img src="{{ promo.image }}" alt="{{ promo.alt }}">
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+
+			</div>
+		{% endif %}
+
+		<!-- htmlmin:ignore -->
+
+		<div class="inner {{ " props" if (data.header or data.promos) }}">
+			<div class="prop-container">
+
+				<a href="/hilfe-service/ueber-uns/lieferung">
+					<img src="//media.ao.com/international/components/proposition-footer/de-DE/lieferung.png" alt="Lieferung">
+					<h3>Gratis Lieferung</h3>
+					<p>Schnell und einfach geliefert bis zum Wunschort!</p>
+				</a>
+
+				<a href="/hilfe-service/ueber-uns/tiefpreisgarantie">
+					<img src="//media.ao.com/international/components/proposition-footer/de-DE/tief.jpg" alt="Tiefpreisgarantie">
+					<h3>Tiefpreis<wbr>garantie</h3>
+					<p>Wir passen unsere preise an alle Online-Shops an!</p>
+				</a>
+
+				<a href="/hilfe-service/ueber-uns/kundenstimmen">
+					<img src="//media.ao.com/international/components/proposition-footer/de-DE/trusted.jpg" alt="Kundenstimmen">
+					<h3>Trusted Shops</h3>
+					<p>Tausende Kunden haben wir bereits glücklich gemacht!</p>
+				</a>
+
+				<a href="/hilfe-service/ueber-uns/aoschutzplus">
+					<img src="//media.ao.com/international/components/proposition-footer/de-DE/schutz.jpg" alt="Recommended">
+					<h3>AO Schutz+</h3>
+					<p>Ihr monatlicher Schutz vor Reparaturkosten!</p>
+				</a>
+
+			</div>
+		</div>
+	</section>
+
+{% elif (lang == "nl-NL") %}
+
+	<section class="footer-proposition">
+
+		{% if data.header %}
+			<div class="inner">
+				<h2>{{data.header}}</h2>
+			</div>
+		{% endif %}
+
+		<!-- htmlmin:ignore -->
+
+		{% if data.promos %}
+			<div class="inner merch susy-fix {{ " space" if data.header }} promo-count-{{ data.promos.length }}">
+
+				<div class="merch-container">
+					{% for promo in data.promos %}
+						<div class="promotion">
+							<a href="{{ promo.url }}">
+								<img src="{{ promo.image }}" alt="{{ promo.alt }}">
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+
+			</div>
+		{% endif %}
+
+		<!-- htmlmin:ignore -->
+
+		<div class="inner {{ " props" if (data.header or data.promos) }}">
+			<div class="prop-container">
+
+				<a href="/advies/over-ons/laagsteprijsgarantie">
+					<img src="//media.ao.com/international/components/proposition-footer/nl-NL/lowestPrice.png" alt="Laagsteprijsgarantie">
+					<h3>Laagsteprijsgarantie</h3>
+					<p>We passen onze prijzen aan</p>
+				</a>
+
+				<a href="/advies/over-ons/levering">
+					<img src="//media.ao.com/international/components/proposition-footer/nl-NL/delivery.png" alt="Gratis levering">
+					<h3>Gratis levering</h3>
+					<p>Morgen of over 50 dagen - wij leveren wanneer het jou uitkomt</p>
+				</a>
+
+				<a href="https://nl.trustpilot.com/review/ao.nl" target="_blank" rel="noopener noreferrer">
+					<img src="//media.ao.com/international/components/proposition-footer/nl-NL/nl-trust.png" alt="Veilig &amp; vertrouwd">
+					<h3>Veilig &amp; vertrouwd</h3>
+					<p>Met 5 sterren gewaardeerd - Nr. 1 in huishoudelijke apparaten</p>
+				</a>
+
+				<a href="/advies/over-ons">
+					<img src="//media.ao.com/international/components/proposition-footer/nl-NL/thumbs-up.png" alt="Eigen bezorgdienst">
+					<h3>Eigen bezorgdienst</h3>
+					<p>Je apparaat wordt bezorgd door onze eigen mensen. Gegarandeerde topservice dus.</p>
+				</a>
+
+			</div>
+		</div>
+	</section>
+{% endif %}

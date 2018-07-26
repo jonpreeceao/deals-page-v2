@@ -1,0 +1,26 @@
+{
+	"en-GB" : {
+		"previous" : "Previous",
+		"next" : "Next",
+		"customerReview" : "Customer review",
+		"shopNow" : "Shop Now",
+		"outOfStock" : "Out Of Stock",
+		"loading" : "Loading..."
+	},
+	"de-DE" : {
+		"previous" : "Bisherige",
+		"next" : "Nächster",
+		"customerReview" : "Kundenbewertung",
+		"shopNow" : "Zum Gerät",
+		"outOfStock" : "Momentan nicht verfügbar",
+		"loading" : "Laden..."
+	},
+	"nl-NL" : {
+		"previous" : "Voorgaand",
+		"next" : "Volgende",
+		"customerReview" : "Klantenbeoordeling",
+		"shopNow" : "Nu Shoppen",
+		"outOfStock" : "Niet op voorraad",
+		"loading" : "Het laden..."
+	}
+}

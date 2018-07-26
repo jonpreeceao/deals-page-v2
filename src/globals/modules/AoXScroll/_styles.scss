@@ -1,0 +1,175 @@
+.ao-xscroll-container {
+	&::before {
+		display: none;
+		content: 'mobile';
+
+		@media (min-width: $landscape) {
+			content: 'landscape';
+		}
+
+		@media (min-width: $tablet) {
+			content: 'tablet';
+		}
+
+		@media (min-width: $desktop) {
+			content: 'desktop';
+		}
+
+		@media (min-width: $uber) {
+			content: 'uber';
+		}
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.stage-container {
+		position: relative;
+	}
+
+	.loading-container {
+		display: none;
+		position: absolute;
+		top: 0;
+		right: -10px;
+		bottom: 0;
+		left: -10px;
+		width: 100%;
+		height: 100%;
+		background-color: #ffffff;
+		transition: opacity 300ms ease-in-out;
+		opacity: 0;
+
+		@include font-size(20);
+	}
+
+	.loading-inner {
+		display: table;
+		width: 100%;
+		height: 100%;
+	}
+
+	.loading-content {
+		display: table-cell;
+		vertical-align: middle;
+		width: 100%;
+		height: 100%;
+		font-weight: $bold;
+		text-align: center;
+	}
+
+	.products-container {
+		display: flex;
+		flex-grow: 1;
+		margin-right: -10px;
+		margin-left: -10px;
+		font-size: 0; // Hack to remove gaps between inline-block elements (instead of using HTML comments)
+	}
+
+	.product {
+		padding: 10px;
+		font-size: 10px; // Reset font-size: 0 hack on container
+		white-space: normal;
+
+		@media (min-width: $landscape) {
+			width: 50%;
+		}
+
+		@media (min-width: $desktop) {
+			width: 33.3333%;
+			min-width: 0;
+			max-width: none;
+		}
+
+		@media (min-width: $uber) {
+			width: 25%;
+		}
+	}
+
+	.product-content {
+		display: flex;
+		align-items: top;
+		height: 200px;
+		padding: 10px;
+		background: #ffffff;
+		color: $aoDarkGrey;
+		border-radius: 4px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+
+		@media (min-width: $tablet) {
+			padding: 15px;
+		}
+	}
+
+	.image-content,
+	.info-content {
+		padding-right: 8px;
+		padding-left: 8px;
+	}
+
+	.image-content {
+		width: 40%;
+	}
+
+	.info-content {
+		width: 60%;
+	}
+
+	.product-title {
+		@include font-size(13);
+
+		line-height: 1.2;
+	}
+
+	&.is-loading {
+		.loading-container {
+			display: block;
+			opacity: 1;
+		}
+	}
+
+	&.is-loaded {
+		.loading-container {
+			display: block;
+			opacity: 0;
+		}
+	}
+
+	&.is-overflowing {
+		.products-container {
+			display: block;
+			overflow-x: scroll;
+			white-space: nowrap;
+		}
+
+		.product {
+			display: inline-block;
+			vertical-align: middle;
+			width: 90%;
+			min-width: 290px;
+			max-width: 320px;
+
+			@media (min-width: $landscape) {
+				width: 47%;
+				min-width: 320px;
+				max-width: none;
+			}
+
+			@media (min-width: $tablet) {
+				min-width: 0;
+			}
+
+			@media (min-width: $desktop) {
+				width: 32%;
+			}
+
+			@media (min-width: $uber) {
+				width: 24%;
+			}
+		}
+	}
+
+}

@@ -1,0 +1,47 @@
+{% set lang = config.lang or data.lang %}
+
+<section class="email-signup-widget" id="email-signup">
+    <div class="inner">
+
+        {% if (lang == "en-GB") %}
+            <h2>Never miss a great deal with our email alerts</h2>
+        {% elif (lang == "de-DE") %}
+            <h2>GERMAN TITLE</h2>
+        {% elif (lang == "nl-NL") %}
+            <h2>ANL TITLE</h2>
+        {% endif %}
+
+
+        <div class="submit-email">
+            <input type="email" name="email" id="email-signup-field" class="email"  placeholder="Enter your email address here" required>
+            <span class="submit-email-button aoCTA">
+                {% if (lang == "en-GB") %}
+                    Sign up
+                {% elif (lang == "de-DE") %}
+                    GERMAN SUBMIT
+                {% elif (lang == "nl-NL") %}
+                    DUTCH SUBMIT
+                {% endif %}
+            </span>
+        </div>
+
+        <span class="email-error">
+            {% if (lang == "en-GB") %}
+                This isn’t a valid email address
+            {% elif (lang == "de-DE") %}
+                GERMAN INVALID EMAIL
+            {% elif (lang == "nl-NL") %}
+                DUTCH INVALID EMAIL
+            {% endif %}
+        </span>
+        <span class="email-success">
+            {% if (lang == "en-GB") %}
+                You’re now signed up for our email alerts. Thanks!
+            {% elif (lang == "de-DE") %}
+                GERMAN SUCCESS
+            {% elif (lang == "nl-NL") %}
+                DUTCH SUCCESS
+            {% endif %}
+        </span>
+    </div>
+</section>

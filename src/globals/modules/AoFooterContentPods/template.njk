@@ -1,0 +1,31 @@
+<footer class="pods-bg-img-copy-overlay">
+	<div class="inner">
+		{% if data.mainHeading %}
+			<div class="centred-heading-with-line">
+				<h2 class="centred-heading-with-line-content">
+					{{ data.mainHeading }}
+				</h2>
+				<!-- /.centred-heading-with-line-content -->
+			</div>
+			<!-- /.centred-heading-with-line -->
+		{% endif %}
+
+		<div class="[ flex-container cont-tab-4 ]">
+			{% for pods in data.pods %}
+				<div class="pod-item [ flex-item grow ]">
+					<a href="{{ pods.href }}" style="background-image: url({{ pods.bgImage }})">
+						<div class="pods-bg-img-copy-overlay-content">
+							<h3>{{ pods.heading }}</h3>
+							<p>{{ pods.content }}</p>
+						</div>
+						<!-- /.pods-bg-img-copy-overlay-content -->
+					</a>
+				</div>
+				<!-- /.pod-item [ flex-item ] -->
+			{% endfor %}
+		</div>
+		<!-- /.[ flex-container cont-tab-4 ] -->
+	</div>
+	<!-- /.inner -->
+</footer>
+<!-- /.pods-bg-img-copy-overlay -->
