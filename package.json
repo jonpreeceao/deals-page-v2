@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
+    "start": "webpack-dev-server --mode development",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "lint": "eslint ./src",
@@ -38,6 +38,7 @@
     "babel-eslint": "^8.2.6",
     "babel-jest": "^23.4.0",
     "babel-loader": "^8.0.0-beta",
+    "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
