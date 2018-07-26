@@ -4,7 +4,13 @@ import ProductCard from '../ProductCard'
 class ProductCardList extends Component {
   render() {
     return (
-      <div>{ this.props.products.map((product) => <ProductCard productData={product} />) }</div>
+      <div className="c-product-card-list">
+        {
+          this.props.products.map((product) => {
+            return <ProductCard key={product.ProductIdentifier} productData={product} />
+          })
+        }
+      </div>
     )
   }
 }

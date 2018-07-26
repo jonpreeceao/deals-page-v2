@@ -1,9 +1,10 @@
 :global {
   @import './globals/AMP/amp-global';
+  @import './components/ProductCardList/index';
   @import './globals/sass/variables';
   @import './globals/sass/mixins';
 
- .inner {
+  .inner {
     @include aoContainer();
   }
 
