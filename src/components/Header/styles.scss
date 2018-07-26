@@ -4,6 +4,9 @@
 
 .inner {
   @include aoContainer();
+
+  padding: 0;
+  margin: 0 auto;
 }
 
 .button {
@@ -14,6 +17,12 @@
 .button-container {
   overflow-x: scroll;
   display: flex;
+
+  @media (min-width: $tablet) {
+    display: block;
+    overflow: visible;
+    text-align: center;
+  }
 }
 
 .main {
@@ -27,4 +36,10 @@
   img {
     width: 100%;
   }
+}
+
+.dp-pill {
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: inline-block;
 }
