@@ -3,7 +3,6 @@ import Header from '../Header'
 import Heading from '../Heading'
 import ProductCardList from '../ProductCardList'
 import TopDealProductCardList from '../TopDealProductCard'
-import SingleProduct from '../SingleProduct'
 import Spinner from '../Spinner'
 
 import styles from './styles.scss'
@@ -40,7 +39,6 @@ class App extends Component {
     return (
       <main className={styles.main}>
         <Header />
-        {/* <TopDealProductCardList products={data} /> */}
         {data.map((section, index) => (
           <Fragment>
             <Heading
@@ -50,9 +48,9 @@ class App extends Component {
               isDark="true"
             />
             {section.IsSingleProduct ? (
-              <SingleProduct
+              <TopDealProductCardList
                 key={`${index}${section.Heading}`}
-                productData={section.CatalogueProductDetail}
+                product={section.CatalogueProductDetail}
               />
             ) : (
               <ProductCardList
