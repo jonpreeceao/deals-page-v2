@@ -264,3 +264,4 @@ wwwroot/static/uploads
 
 coverage
 .history
+.env

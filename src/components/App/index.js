@@ -1,15 +1,25 @@
 import React, { Component } from 'react'
 import Header from '../Header'
-import sampleProductData from '../ProductCardList/productData'
 import ProductCardList from '../ProductCardList'
 import styles from './styles.scss'
-
-const productData = sampleProductData.Response.Products
-
+import { queryListerPage } from '../../data'
 
 class App extends Component {
   state = {
-    message: 'Hello, World!'
+    message: 'Hello, World!',
+    data: []
+  }
+
+  componentDidMount() {
+    queryListerPage().then(result => {
+      if (result.Message) {
+        return
+      }
+
+      this.setState({
+        data: result.Response
+      })
+    })
   }
 
   showMessage = () => {
@@ -17,15 +27,15 @@ class App extends Component {
   }
 
   render() {
+    const { data } = this.state
+    if (!data || !data.Products) {
+      return null
+    }
+
     return (
       <main className={styles.main}>
         <Header />
-        <h1>Hello, World!</h1>
-        <h2 className={styles.header}>Goodbye</h2>
-        <button className={styles.button} onClick={this.showMessage}>
-          Click Me
-        </button>
-        <ProductCardList products={productData} />
+        <ProductCardList products={data.Products} />
       </main>
     )
   }

@@ -6,11 +6,9 @@ class ProductCardList extends Component {
   render() {
     return (
       <div className={styles['c-product-card-list']}>
-        {
-          this.props.products.map((product) => {
-            return <ProductCard key={product.ProductIdentifier} productData={product} />
-          })
-        }
+        {this.props.products.map(product => {
+          return <ProductCard key={product.ProductIdentifier} productData={product} />
+        })}
       </div>
     )
   }
