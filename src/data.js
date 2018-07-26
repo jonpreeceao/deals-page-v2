@@ -5,16 +5,9 @@ const headers = {
 
 const url = 'https://beta-catalogueservice.ao-qa.com/api/v1/GetListerPage'
 
-const query = {
+const baseQuery = {
   CatalogueQuery: {
     CategoryIds: [107, 108],
-    Criteria: [
-      {
-        Name: 'yesnofeatures',
-        Values: ['3302'],
-        CriteriaType: 'Or'
-      }
-    ],
     Formatting: {
       PageSize: 12
     },
@@ -23,12 +16,12 @@ const query = {
   CompanyId: 1
 }
 
-export function queryListerPage() {
+export function getProductData(query) {
   return fetch(url, {
     method: 'POST',
     headers,
     cors: 'no-cors',
-    body: JSON.stringify(query)
+    body: JSON.stringify({ ...baseQuery, ...query })
   }).then(function(response) {
     return response.json()
   })
