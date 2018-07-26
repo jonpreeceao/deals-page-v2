@@ -1,19 +1,9 @@
 import React from 'react'
 import { parseRatingClass } from '../../utils/product'
 import styles from './styles'
-import { create } from 'domain';
 
 function TopDealProductCard(props) {
   const topDeal = props.product
-  console.log(topDeal)
-
-  function spliceRating(rating){
-    const wholeNumber = parseInt(Math.floor(rating));
-    const decimalNumber = (rating % 1).toFixed(1).slice(-1);
-    return `${wholeNumber}-${decimalNumber}`
-  }
-
-
 
   return (
     <div className={styles['c-product-card-list__item']}>
@@ -33,16 +23,31 @@ function TopDealProductCard(props) {
             <div className="u-p--tiny">
               <h6>{topDeal.CatalogueProductSummary.Title}</h6>
               <div className={styles.rating}>
-                <div className={'stars rating-sprite-' + parseRatingClass(topDeal.CatalogueProductSummary.Rating)} />
-                <div>{topDeal.CatalogueProductSummary.Rating} ({topDeal.CatalogueProductSummary.ReviewCount})</div>
+                <div
+                  className={
+                    'stars rating-sprite-' +
+                    parseRatingClass(topDeal.CatalogueProductSummary.Rating)
+                  }
+                />
+                <div>
+                  {topDeal.CatalogueProductSummary.Rating} ({
+                    topDeal.CatalogueProductSummary.ReviewCount
+                  })
+                </div>
               </div>
-              <p className={styles.price}>&pound;{topDeal.CatalogueProductSummary.Price}</p>
+              <p className={styles.price}>
+                &pound;{topDeal.CatalogueProductSummary.Price}
+              </p>
             </div>
           </div>
           <div className="o-flex-item u-grid--12">
             <div className="u-p--tiny">
               <ul>
-                {topDeal.CatalogueProductSummary.FeatureDescriptions.map(feature => <li dangerouslySetInnerHTML={{__html:feature}}></li>)}
+                {topDeal.CatalogueProductSummary.FeatureDescriptions.map(
+                  (feature, index) => (
+                    <li key={index} dangerouslySetInnerHTML={{ __html: feature }} />
+                  )
+                )}
               </ul>
             </div>
           </div>
