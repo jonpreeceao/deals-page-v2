@@ -12,13 +12,13 @@ class App extends Component {
 
   render() {
     return (
-      <header>
+      <main className={styles.main}>
         <h1>Hello, World!</h1>
         <h2 className={styles.header}>Goodbye</h2>
         <button className={styles.button} onClick={this.showMessage}>
           Click Me
         </button>
-      </header>
+      </main>
     )
   }
 }
