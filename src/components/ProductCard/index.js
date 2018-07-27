@@ -3,19 +3,34 @@ import { parseRatingClass } from '../../utils/product'
 import styles from './styles'
 
 function ProductCard(props) {
-
-  const { productData } = props;
+  const { productData } = props
 
   return (
     <div className={`${styles['c-product-card-list__item']} o-flex-item`}>
       <div className={`${styles['c-product-card-list__item-inner']}`}>
-        <img src={`//media.ao.com/brandlogos/en-GB/${productData.Images.BrandFileName}`} alt={productData.Brand} />
-        <img src={`//media.ao.com/en-GB/Productimages/Images/rvSmall/${productData.Images.SmallFileName}`} alt={productData.Title} />
+        <div className={styles.container}>
+          <div className={styles.label}>Save &pound;20</div>
+          <img
+            className={styles.brandLogo}
+            src={`//media.ao.com/brandlogos/en-GB/${productData.Images.BrandFileName}`}
+            alt={productData.Brand}
+          />
+        </div>
+        <img
+          src={`//media.ao.com/en-GB/Productimages/Images/rvSmall/${
+            productData.Images.SmallFileName
+          }`}
+          alt={productData.Title}
+        />
         <div>&pound;{productData.Price}</div>
-        <h2>{ productData.Title }</h2>
+        <h2>{productData.Title}</h2>
         <div className={styles.rating}>
-          <div className={'stars rating-sprite-' + parseRatingClass(productData.Rating)} />
-          <div>{productData.Rating} ({productData.ReviewCount})</div>
+          <div
+            className={'stars rating-sprite-' + parseRatingClass(productData.Rating)}
+          />
+          <div>
+            {productData.Rating} ({productData.ReviewCount})
+          </div>
         </div>
       </div>
     </div>

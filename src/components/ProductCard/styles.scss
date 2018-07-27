@@ -19,6 +19,7 @@
 	min-width: 250px;
 	max-width: 300px;
 	padding: 16px;
+	border: 1px solid #dfe3e6;
 	border-radius: 4px;
 	background-color: #ffffff;
 	white-space: normal;
@@ -27,4 +28,27 @@
 .rating {
 	display: flex;
 	align-items: center;
+}
+
+.brand-logo {
+	display: block;
+	align-self: center;
+	width: auto;
+	height: auto;
+	max-height: 25px !important;
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 8px;
+}
+
+.label {
+	width: auto;
+	padding: 4px 8px;
+	border-radius: 4px;
+	color: #ffffff;
+	text-align: center;
+	background-color: #c22035;
 }
